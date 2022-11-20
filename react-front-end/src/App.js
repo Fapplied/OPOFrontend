@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import ProblemList from '../components/ProblemList'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <ProblemList/>
         <p>
           Edit
           <code>src/App.js</code>
