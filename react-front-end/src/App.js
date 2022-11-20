@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import ProblemList from '../components/ProblemList'
+import ProblemList from './components/ProblemList'
 
 function App() {
 
