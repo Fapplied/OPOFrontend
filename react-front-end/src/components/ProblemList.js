@@ -5,19 +5,19 @@ import ProForm from "./ProForm";
 
 const ProblemList = () => {
   const [problems, setProblems] = useState([])
-  // useEffect(() => {
-  //
-  //   const test = async () => {
-  //     const test = await axios.get("https://opobackend.azurewebsites.net/WeatherForecast").then(res => setProblems({res})
-  //     )
-  //   }
-  //   test();
-  // }, [])
+  useEffect(() => {
+
+    const test = async () => {
+      const test = await axios.get("https://opobackend.azurewebsites.net/api/ProblemController").then(res => console.log(res)
+      )
+    }
+    test();
+  }, [])
   //fetch and Map problems
   return (
     <div>
       <ul id='Problem-List'>
-        {problems.map(to =>  <li ><Problem /></li>)}
+        {/*{problems.map(to =>  <li ><Problem /></li>)}*/}
       </ul>
       <ProForm/>
     </div>
