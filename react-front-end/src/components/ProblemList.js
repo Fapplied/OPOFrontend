@@ -8,7 +8,7 @@ const ProblemList = () => {
   useEffect(() => {
 
     const test = async () => {
-      const test = await axios.get("https://opobackend.azurewebsites.net/api/ProblemController").then(res => console.log(res)
+      const test = await axios.get("https://opobackend.azurewebsites.net/ProblemController").then(res => console.log(res)
       )
     }
     test();
