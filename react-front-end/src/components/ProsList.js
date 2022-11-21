@@ -11,14 +11,14 @@ const ProList = () => {
     // adds new con to beginning of cons array
     setPros([pro, ...pros]);
   }
-  useEffect(() => {
-
-    const test = async () => {
-      const test = await axios.get("https://opobackend.azurewebsites.net/WeatherForecast").then(res => setPromlems({res})
-      )
-    }
-    test();
-  }, [pros])
+  // useEffect(() => {
+  //
+  //   const test = async () => {
+  //     const test = await axios.get("https://opobackend.azurewebsites.net/WeatherForecast").then(res => setPromlems({res})
+  //     )
+  //   }
+  //   test();
+  // }, [])
 
   //Call back end and ask for list of Pros. Add its own controller.
 

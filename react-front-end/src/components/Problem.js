@@ -9,9 +9,7 @@ const Problem = () => {
   return (
     <div>
       <ProsList/>
-      <ProForm/>
       <ConsList/>
-      <ConForm/>
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const ConForm = ({addCon}) => {
   const [con, setCon] = useState({
-    title: "",
+    title: ""
   });
   
 

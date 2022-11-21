@@ -12,14 +12,14 @@ const ConsList = () => {
   }
 
   const [cons, setCons] = useState([])
-  useEffect(() => {
-
-    const test = async () => {
-      const test = await axios.get("https://opobackend.azurewebsites.net/WeatherForecast").then(res => setPromlems({res})
-      )
-    }
-    test();
-  }, [cons])
+  // useEffect(() => {
+  //
+  //   const test = async () => {
+  //     const test = await axios.get("https://opobackend.azurewebsites.net/WeatherForecast").then(res => setPromlems({res})
+  //     )
+  //   }
+  //   test();
+  // }, [])
   
   //Call back end and ask for list of cons. Add its own controller.
   return (
@@ -27,6 +27,7 @@ const ConsList = () => {
       <ul id='Cons-List'>
         { cons.map(to =>  <li ><Con /></li>)}
       </ul>
+      
       <ConForm addCon={addCon} />
     </div>
   );
