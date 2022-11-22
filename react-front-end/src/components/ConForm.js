@@ -26,6 +26,7 @@ const ConForm = ({addCon}) => {
         <input
           type="text"
           name="task"
+          placeholder='Con'
           value={con.task}
           onChange={handleTaskInputChange}
         />

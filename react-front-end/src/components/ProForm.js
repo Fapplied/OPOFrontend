@@ -26,6 +26,7 @@ const ProForm = ({addPro}) => {
         <input
           type="text"
           name="task"
+          placeholder='Pro'
           value={pro.task}
           onChange={handleTaskInputChange}
         />
