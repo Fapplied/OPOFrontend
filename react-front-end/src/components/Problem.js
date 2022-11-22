@@ -9,6 +9,7 @@ const Problem = ( {problem}) => {
   return (
     <div>
       <h3>{problem.title}</h3>
+      
       <ProsList/>
       <ConsList/>
     </div>

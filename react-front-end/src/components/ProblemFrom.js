@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import ProForm from "./ProForm";
 import ConForm from "./ConForm";
+import Button from "@mui/material/Button";
 
-const ProblemFrom = (addProblem) => {
+const ProblemFrom = ({addProblem}) => {
   const [problem, setProblem] = useState({
     title: "",
   });
@@ -29,11 +30,11 @@ const ProblemFrom = (addProblem) => {
         <input
           type="text"
           name="task"
-          placeholder='Pro'
+          placeholder='Problem'
           value={problem.title}
           onChange={handleTaskInputChange}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit">Post</Button>
       </form>
     </div>
   );

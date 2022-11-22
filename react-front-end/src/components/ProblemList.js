@@ -19,7 +19,7 @@ const ProblemList = () => {
 
   const addProblem = async (problem) => {
     // adds new con to beginning of cons array
-    const {status } = axios.post(PROBLEMS_ENDPOINT, {problem})
+    const {status } = axios.post(PROBLEMS_ENDPOINT + '?userId=1', problem)
     if(status === 200) {
       getProblems()
     }
