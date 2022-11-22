@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Button from '@mui/material/Button';
 
 const ConForm = ({addCon}) => {
   const [con, setCon] = useState({
@@ -30,7 +31,7 @@ const ConForm = ({addCon}) => {
           value={con.task}
           onChange={handleTaskInputChange}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit">Post</Button>
       </form>
     </div>
   );
