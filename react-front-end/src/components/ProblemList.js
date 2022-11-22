@@ -7,7 +7,7 @@ import ProblemFrom from "./ProblemFrom";
 const ProblemList = () => {
   const [problems, setProblems] = useState([])
   const getProblems = async () => {
-    const res = await axios.get("https://opobackend.azurewebsites.net/api/Problem");
+    const res = await axios.get("https://opobackend.azurewebsites.net/api/Problems");
     console.log(res)
     
   }
