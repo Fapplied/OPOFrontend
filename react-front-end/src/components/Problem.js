@@ -4,10 +4,11 @@ import ConsList from "./ConsList";
 import ProForm from "./ProForm";
 import ConForm from "./ConForm";
 
-const Problem = () => {
+const Problem = ( {problem}) => {
   
   return (
     <div>
+      <h3>{problem.title}</h3>
       <ProsList/>
       <ConsList/>
     </div>
