@@ -4,15 +4,23 @@ import Con from "./Con";
 import axios from "axios";
 import ProForm from "./ProForm";
 
+const Cons_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Pros';
+
+
 const ProList = ({problem}) => {
+  
   
   const [pros, setPros] = useState( [])
 
-  const {proList } = problem
+  const {proList, problemId } = problem
   
 
   const addPro = (pro) => {
     // adds new con to beginning of cons array
+    const {status } = axios.post(Cons_ENDPOINT + `?problemId=${problemId}`, pro)
+    if(status) {
+    }
+    
     setPros([pro, ...pros]);
   }
   // useEffect(() => {

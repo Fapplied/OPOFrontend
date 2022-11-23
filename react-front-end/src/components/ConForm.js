@@ -1,24 +1,24 @@
 import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 
-const ConForm = ({addCon}) => {
+const ConForm = ({ addCon}) => {
   const [con, setCon] = useState({
-    title: ""
+    Disadvantage: ""
   });
   
 
   function handleTaskInputChange(e) {
     // e.target.value contains new input from onChange
     // event for input elements
-    setCon({ ...con, title: e.target.value });
+    setCon({ ...con, Disadvantage: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents browser refresh
     // trim() gets rid of string whitespace
-    if (con.task.trim()) {
+    if (con.Disadvantage.trim()) {
       addCon({ ...con });
-      setCon({ ...con, task: "" });
+      setCon({ ...con, Disadvantage: "" });
     }
   }
   return (
@@ -28,7 +28,7 @@ const ConForm = ({addCon}) => {
           type="text"
           name="task"
           placeholder='Con'
-          value={con.task}
+          value={con.Disadvantage}
           onChange={handleTaskInputChange}
         />
         <Button type="submit">Post</Button>

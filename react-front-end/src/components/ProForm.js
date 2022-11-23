@@ -3,22 +3,22 @@ import Button from "@mui/material/Button";
 
 const ProForm = ({addPro}) => {
   const [pro, setPro] = useState({
-    title: "",
+    Advantage: "",
   });
 
 
   function handleTaskInputChange(e) {
     // e.target.value contains new input from onChange
     // event for input elements
-    setPro({ ...pro, title: e.target.value });
+    setPro({ ...pro, Advantage: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents browser refresh
     // trim() gets rid of string whitespace
-    if (pro.title.trim()) {
+    if (pro.Advantage.trim()) {
       addPro({ ...pro });
-      setPro({ ...pro, title: "" });
+      setPro({ ...pro, Advantage: "" });
     }
   }
   return (
@@ -28,7 +28,7 @@ const ProForm = ({addPro}) => {
           type="text"
           name="task"
           placeholder='Pro'
-          value={pro.task}
+          value={pro.Advantage}
           onChange={handleTaskInputChange}
         />
         <Button type="submit">Post</Button>

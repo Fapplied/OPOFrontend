@@ -4,15 +4,25 @@ import Problem from "./Problem";
 import Con from "./Con";
 import ConForm from "./ConForm";
 
-const ConsList = ({problem}) => {
-  const {conList} = problem
+const Cons_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Cons';
 
- const addCon = (con) => {
+
+const ConsList = ({problem}) => {
+  const {conList, problemId} = problem
+  const [cons, setCons] = useState([])
+  // console.log({cons})
+
+
+
+  const addCon = (con) => {
     // adds new con to beginning of cons array
-    setCons([con, ...cons]);
+    const {status } = axios.post(Cons_ENDPOINT + `?problemId=${problemId}`, con)
+    if(status) {
+      // setCons([ ...cons, con]);
+    }
   }
 
-  const [cons, setCons] = useState([])
+  
   // useEffect(() => {
   //
   //   const test = async () => {
@@ -30,7 +40,7 @@ const ConsList = ({problem}) => {
         { conList.map(to =>  <li ><Con title={to.title} /></li>)}
       </ul>}
       
-      <ConForm addCon={addCon} />
+      <ConForm addCon={addCon}/>
     </div>
   );
 };

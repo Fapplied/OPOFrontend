@@ -3,7 +3,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {IconButton} from "@mui/material";
 import {ArrowUpwardOutlined} from "@mui/icons-material";
 
-const Con = ({title}) => {
+const Con = ({ title}) => {
+  
+  
   const numberOfLikes = Math.floor(Math.random() * 11);
   return (
     <div style={{display: 'flex'}}>

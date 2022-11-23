@@ -8,12 +8,12 @@ const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
 const ProblemList = () => {
   const [problems, setProblems] = useState([])
+  
   const getProblems = async () => {
     const {data, status} = await axios.get(PROBLEMS_ENDPOINT);
     if(status === 200) {
       setProblems(data)
     }
-    
   }
 
   const addProblem = async (problem) => {
