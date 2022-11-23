@@ -27,7 +27,7 @@ const ProList = ({problem}) => {
   //Call back end and ask for list of Pros. Add its own controller.
 
   return (
-    <div>
+    <div >
       {proList && <h3>Pros</h3>}
       {proList && 
         

@@ -24,7 +24,7 @@ const ConsList = ({problem}) => {
   
   //Call back end and ask for list of cons. Add its own controller.
   return (
-    <div>
+    <div >
       {conList && <h3>Cons</h3>}
       {conList && <ul id='Cons-List'>
         { conList.map(to =>  <li ><Con title={to.title} /></li>)}

@@ -10,8 +10,8 @@ const Problem = ( {problem}) => {
     <div>
       <h4>{problem.title}</h4>
       <div className='problem-lists' >
-      <ProsList problem={problem}/>
-      <ConsList problem={problem}/>
+      <ProsList className='list-c' problem={problem}/>
+      <ConsList className='list-c' problem={problem}/>
       </div>
     </div>
   );
