@@ -10,10 +10,7 @@ const Cons_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Cons';
 const ConsList = ({problem}) => {
   const {conList, problemId} = problem
   const [cons, setCons] = useState([])
-  // console.log({cons})
-
-
-
+  
   const addCon = (con) => {
     // adds new con to beginning of cons array
     const {status } = axios.post(Cons_ENDPOINT + `?problemId=${problemId}`, con)
@@ -21,23 +18,14 @@ const ConsList = ({problem}) => {
       // setCons([ ...cons, con]);
     }
   }
-
   
-  // useEffect(() => {
-  //
-  //   const test = async () => {
-  //     const test = await axios.get("https://opobackend.azurewebsites.net/WeatherForecast").then(res => setPromlems({res})
-  //     )
-  //   }
-  //   test();
-  // }, [])
   
   //Call back end and ask for list of cons. Add its own controller.
   return (
     <div >
       {conList && <h3>Cons</h3>}
       {conList && <ul id='Cons-List'>
-        { conList.map(to =>  <li ><Con title={to.title} /></li>)}
+        { conList.map(con =>  <li ><Con con={con} /></li>)}
       </ul>}
       
       <ConForm addCon={addCon}/>
