@@ -8,18 +8,22 @@ const Pro_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Pros';
 
 
 const ProList = ({problem}) => {
-  
-  // const [pros, setPros] = useState( [])
   const {proList, problemId } = problem
   
+  const [pros, setPros] = useState( () => {
+    return proList??[]})
+  
+  // console.log(pros);
 
-  const addPro = (pro) => {
+  const addPro = async (pro) => {
     // adds new con to beginning of cons array
-    const {status } = axios.post(Pro_ENDPOINT+ `?problemId=${problemId}`, pro)
+    const {data, status} = await axios.post(Pro_ENDPOINT+ `?problemId=${problemId}`, pro)
     if(status) {
+      const {proList: theList} = data.problem
+      
+      setPros([...theList]);
     }
     
-    // setPros([pro, ...pros]);
   }
   
   //Call back end and ask for list of Pros. Add its own controller.
@@ -29,7 +33,7 @@ const ProList = ({problem}) => {
       {proList && <h3>Pros</h3>}
       {proList &&
         <ul id='Cons-List'>
-        { proList.map(pro =>  <li ><Pro pro={pro} /></li>)}
+        { pros.map(pro =>  <li ><Pro pro={pro} /></li>)}
       </ul>}
       
       <ProForm addPro={addPro}/>

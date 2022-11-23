@@ -11,10 +11,17 @@ const Con = ({ con }) => {
   const {title, conId, problemId} = con
   const [likes, setLikes] = useState(0)
 
+  const handleUpVoteClick = async () => {
+    const { data, status} = await axios.post(Likes_ENDPOINT + `?conId=${conId}`, 1);
+    if(status === 201) {
+      getLikes();
+    }
+
+  }
+
 
   const getLikes = async () => {
     const {data, status} = await axios.get(Likes_ENDPOINT + `/${conId}`);
-    console.log(data)
     if(status === 200 && Number.isInteger(data)) {
       setLikes(data)
     }
@@ -28,7 +35,7 @@ const Con = ({ con }) => {
   return (
     <div style={{display: 'flex'}}>
       <div>
-      <IconButton >
+      <IconButton onClick={handleUpVoteClick} >
         <ArrowUpwardOutlined/>
       </IconButton>
         <p style={{color: "black"}}>{likes}</p>

@@ -8,7 +8,7 @@ const Likes_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Likes/pro';
 
 
 const Pro = ({pro}) => {
-  const {title, proId, problemId} = pro
+  const {title, proId} = pro
   const [likes, setLikes] = useState(0)
   
   const getLikes = async () => {
@@ -23,18 +23,25 @@ const Pro = ({pro}) => {
 
     getLikes()
   }, [])
+  
+  const handleUpVoteClick = async () => {
+    const {data, status} = await axios.post(Likes_ENDPOINT + `?proId=${proId}`, 2);
+    if (status === 201) {
+      getLikes()
+    }
+  }
 
   return (
     <div style={{display: 'flex'}}>
       <div>
-        <IconButton >
+        <IconButton onClick={handleUpVoteClick} >
           <ArrowUpwardOutlined/>
         </IconButton>
         <p style={{color: "black"}}>{likes}</p>
       </div>
       <p>{title}</p>
-      <IconButton >
-        <DeleteIcon/>
+      <IconButton  >
+        <DeleteIcon />
       </IconButton>
     </div>
   );
