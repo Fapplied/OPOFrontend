@@ -9,9 +9,10 @@ const Problem = ( {problem}) => {
   return (
     <div>
       <h4>{problem.title}</h4>
-      
+      <div className='problem-lists' >
       <ProsList problem={problem}/>
       <ConsList problem={problem}/>
+      </div>
     </div>
   );
 };

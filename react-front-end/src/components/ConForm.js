@@ -22,7 +22,7 @@ const ConForm = ({addCon}) => {
     }
   }
   return (
-    <div>
+    <div className='form'>
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
           type="text"

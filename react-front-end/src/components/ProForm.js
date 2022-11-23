@@ -22,7 +22,7 @@ const ProForm = ({addPro}) => {
     }
   }
   return (
-    <div>
+    <div className='form'>
       <form className="Pro-form" onSubmit={handleSubmit}>
         <input
           type="text"
