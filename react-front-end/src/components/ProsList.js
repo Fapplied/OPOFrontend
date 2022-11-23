@@ -4,8 +4,12 @@ import Con from "./Con";
 import axios from "axios";
 import ProForm from "./ProForm";
 
-const ProList = () => {
-  const [pros, setPros] = useState([])
+const ProList = ({problem}) => {
+  
+  const [pros, setPros] = useState( [])
+
+  const {proList } = problem
+  
 
   const addPro = (pro) => {
     // adds new con to beginning of cons array
@@ -24,9 +28,14 @@ const ProList = () => {
 
   return (
     <div>
-      <ul id='Cons-List'>
-        { pros.map(to =>  <li ><Con /></li>)}
-      </ul>
+      {proList && <h3>Pros</h3>}
+      {proList && 
+        
+        <ul id='Cons-List'>
+        { proList.map(to =>  <li ><Pro title={to.title} /></li>)}
+      </ul>}
+      
+      
       <ProForm addPro={addPro}/>
       
     </div>

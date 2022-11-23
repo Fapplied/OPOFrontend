@@ -10,7 +10,6 @@ const ProblemList = () => {
   const [problems, setProblems] = useState([])
   const getProblems = async () => {
     const {data, status} = await axios.get(PROBLEMS_ENDPOINT);
-    console.log(data)
     if(status === 200) {
       setProblems(data)
     }

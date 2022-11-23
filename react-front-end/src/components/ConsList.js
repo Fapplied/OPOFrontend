@@ -4,7 +4,8 @@ import Problem from "./Problem";
 import Con from "./Con";
 import ConForm from "./ConForm";
 
-const ConsList = () => {
+const ConsList = ({problem}) => {
+  const {conList} = problem
 
  const addCon = (con) => {
     // adds new con to beginning of cons array
@@ -24,9 +25,10 @@ const ConsList = () => {
   //Call back end and ask for list of cons. Add its own controller.
   return (
     <div>
-      <ul id='Cons-List'>
-        { cons.map(to =>  <li ><Con /></li>)}
-      </ul>
+      {conList && <h3>Cons</h3>}
+      {conList && <ul id='Cons-List'>
+        { conList.map(to =>  <li ><Con title={to.title} /></li>)}
+      </ul>}
       
       <ConForm addCon={addCon} />
     </div>

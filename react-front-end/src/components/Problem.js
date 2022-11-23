@@ -8,10 +8,10 @@ const Problem = ( {problem}) => {
   
   return (
     <div>
-      <h3>{problem.title}</h3>
+      <h4>{problem.title}</h4>
       
-      <ProsList/>
-      <ConsList/>
+      <ProsList problem={problem}/>
+      <ConsList problem={problem}/>
     </div>
   );
 };
