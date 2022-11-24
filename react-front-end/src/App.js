@@ -9,9 +9,11 @@ import ProblemList from './components/ProblemList'
 function App() {
   const [user, setUser] = useState({})
 
-  const handleCallbackResponseGoogle = (response) => {
+  const handleCallbackResponseGoogle = async (response) => {
     var user = jwtDecode(response.credential);
-    console.log({user})
+   var test = await axios.post('https://localhost:7057/api/Users', { Name:user.name, GoogleId:user.sub})
+    // var test = await axios.get('https://localhost:7057/api/Users')
+    console.log({test})
     return setUser(user);
   }
 
