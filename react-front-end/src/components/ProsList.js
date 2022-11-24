@@ -13,30 +13,24 @@ const ProList = ({problem}) => {
   const [pros, setPros] = useState(() => {
     return proList ?? []
   })
-
-
+  
   const addPro = async (pro) => {
-    // adds new con to beginning of cons array
+    // adds new pro to beginning of cons array
     const {status} = await axios.post(Pro_ENDPOINT + `?problemId=${problemId}`, pro)
-    // if(status)
-
     const {status: fetchWorked, data} = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`)
     if(fetchWorked) {
       
     }
     const {proList: theList} = data
-    
     setPros([...theList]);
   }
 
   //Call back end and ask for list of Pros. Add its own controller.
-
-
   return (
     <div>
-      {proList && <h3>Pros</h3>}
+      <h3>Pros</h3>
       {proList &&
-        <ul id='Cons-List'>
+        <ul className='Cons-List'>
           {pros.map(pro => <li><Pro pro={pro}/></li>)}
         </ul>}
 
