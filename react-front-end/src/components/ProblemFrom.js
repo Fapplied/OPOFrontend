@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import ProForm from "./ProForm";
-import ConForm from "./ConForm";
 import Button from "@mui/material/Button";
 
 const ProblemFrom = ({addProblem}) => {
@@ -12,18 +10,18 @@ const ProblemFrom = ({addProblem}) => {
   function handleTaskInputChange(e) {
     // e.target.value contains new input from onChange
     // event for input elements
-    setProblem({ ...problem, title: e.target.value });
+    setProblem({...problem, title: e.target.value});
   }
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents browser refresh
     // trim() gets rid of string whitespace
     if (problem.title.trim()) {
-      addProblem({ ...problem });
-      setProblem({ ...problem, title: "" });
+      addProblem({...problem});
+      setProblem({...problem, title: ""});
     }
   }
-  
+
   return (
     <div>
       <form className="Pro-form" onSubmit={handleSubmit}>
