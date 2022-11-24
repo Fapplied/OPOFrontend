@@ -9,10 +9,11 @@ import Footer from "./components/Footer";
 function App() {
   const [user, setUser] = useState({})
 
-  const handleCallbackResponseGoogle = (response) => {
-    console.log({rawToken: response.credential})
-    const user = jwtDecode(response.credential);
-    console.log({user})
+  const handleCallbackResponseGoogle = async (response) => {
+    var user = jwtDecode(response.credential);
+   var test = await axios.post('https://localhost:7057/api/Users', { Name:user.name, GoogleId:user.sub})
+    // var test = await axios.get('https://localhost:7057/api/Users')
+    console.log({test})
     return setUser(user);
   }
 
