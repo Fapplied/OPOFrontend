@@ -35,7 +35,7 @@ const ProblemList = () => {
     <div>
       <ProblemFrom addProblem={addProblem}/>
       <ul id='Problem-List'>
-        {problems.map(problem =>  <li key={problem.id}><Problem  problem={problem}/></li>)}
+        {problems.map(problem =>  <li key={problem.id}><Problem getProblems={getProblems} problem={problem}/></li>)}
       </ul>
     </div>
   );

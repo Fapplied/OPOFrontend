@@ -16,14 +16,12 @@ const Con = ({ con }) => {
     if(status === 201) {
       getLikes();
     }
-
   }
-
 
   const getLikes = async () => {
     const {data, status} = await axios.get(Likes_ENDPOINT + `/${conId}`);
-    if(status === 200 && Number.isInteger(data)) {
-      setLikes(data)
+    if(status === 200 && Number.isInteger(data.length)) {
+      setLikes(data.length)
     }
   }
 
