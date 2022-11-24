@@ -10,6 +10,7 @@ function App() {
   const [user, setUser] = useState({})
 
   const handleCallbackResponseGoogle = (response) => {
+    console.log({rawToken: response.credential})
     var user = jwtDecode(response.credential);
     console.log({user})
     return setUser(user);
