@@ -1,32 +1,43 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import Pro from './Pro'
-import Con from "./Con";
 import axios from "axios";
 import ProForm from "./ProForm";
 
-const ProList = () => {
-  const [pros, setPros] = useState([])
+const Pro_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Pros';
+const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
-  const addPro = (pro) => {
+
+
+const ProList = ({problem}) => {
+  const {proList, problemId } = problem
+  
+  const [pros, setPros] = useState( () => {
+    return proList??[]})
+  
+
+  const addPro = async (pro) => {
     // adds new con to beginning of cons array
-    setPros([pro, ...pros]);
+    const { status} = await axios.post(Pro_ENDPOINT+ `?problemId=${problemId}`, pro)
+    // if(status)
+    
+    const { data} = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`)
+   
+    const {proList: theList} = data
+    
+    setPros([...theList]);
   }
-  // useEffect(() => {
-  //
-  //   const test = async () => {
-  //     const test = await axios.get("https://opobackend.azurewebsites.net/WeatherForecast").then(res => setPromlems({res})
-  //     )
-  //   }
-  //   test();
-  // }, [])
-
+  
   //Call back end and ask for list of Pros. Add its own controller.
 
+  
   return (
-    <div>
-      <ul id='Cons-List'>
-        { pros.map(to =>  <li ><Con /></li>)}
-      </ul>
+    <div >
+      {proList && <h3>Pros</h3>}
+      {proList &&
+        <ul id='Cons-List'>
+        { pros.map(pro =>  <li ><Pro pro={pro} /></li>)}
+      </ul>}
+      
       <ProForm addPro={addPro}/>
       
     </div>

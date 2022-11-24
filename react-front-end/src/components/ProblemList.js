@@ -8,13 +8,12 @@ const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
 const ProblemList = () => {
   const [problems, setProblems] = useState([])
+  
   const getProblems = async () => {
     const {data, status} = await axios.get(PROBLEMS_ENDPOINT);
-    console.log(data)
     if(status === 200) {
       setProblems(data)
     }
-    
   }
 
   const addProblem = async (problem) => {
@@ -36,7 +35,7 @@ const ProblemList = () => {
     <div>
       <ProblemFrom addProblem={addProblem}/>
       <ul id='Problem-List'>
-        {problems.map(problem =>  <li key={problem.id}><Problem  problem={problem}/></li>)}
+        {problems.map(problem =>  <li key={problem.id}><Problem getProblems={getProblems} problem={problem}/></li>)}
       </ul>
     </div>
   );
