@@ -10,17 +10,18 @@ const ProForm = ({addPro}) => {
   function handleTaskInputChange(e) {
     // e.target.value contains new input from onChange
     // event for input elements
-    setPro({ ...pro, Advantage: e.target.value });
+    setPro({...pro, Advantage: e.target.value});
   }
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents browser refresh
     // trim() gets rid of string whitespace
     if (pro.Advantage.trim()) {
-      addPro({ ...pro });
-      setPro({ ...pro, Advantage: "" });
+      addPro({...pro});
+      setPro({...pro, Advantage: ""});
     }
   }
+
   return (
     <div className='form'>
       <form className="Pro-form" onSubmit={handleSubmit}>
