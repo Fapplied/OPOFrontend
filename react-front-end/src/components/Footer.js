@@ -1,12 +1,12 @@
-import logo from '../logo.svg';
+import gitLogo from './GitHub_Logo.png';
 
 
 
 const Footer = () => {
-  return <>
-    <hr />
-    <a href='https://github.com/saltams'>Log in @ <img src={logo} alt='Git logo' width='50px'/></a>
-  </>
+    return <>
+        <hr />
+        <a href='https://github.com/saltams'>Log in @ <img src={gitLogo} alt='Git logo' width='50px'/></a>
+    </>
 }
 
 export default Footer;
