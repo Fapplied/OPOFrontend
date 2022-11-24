@@ -16,22 +16,19 @@ function App() {
     console.log({test})
     return setUser(user);
   }
+  
+  useEffect(() => {
+   /* global google */
+    google.accounts.id.initialize({
+      client_id: "1061925551073-28j75e6a29ukrfosq7otehkbe05auqj3.apps.googleusercontent.com",
+      callback: handleCallbackResponseGoogle
+    })
 
-
-  // const [weather, setWeather] = useState(null);
-
-  // useEffect(() => {
-  //  /* global google */
-  //   google.accounts.id.initialize({
-  //     client_id: "1061925551073-28j75e6a29ukrfosq7otehkbe05auqj3.apps.googleusercontent.com",
-  //     callback: handleCallbackResponseGoogle
-  //   })
-  //
-  //   google.accounts.id.renderButton(
-  //     document.getElementById("signInDiv"),
-  //     { theme: "outline", size: "large" }
-  //   );
-  // },[])
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      { theme: "outline", size: "large" }
+    );
+  },[])
 
   return (
     <div className="App">
