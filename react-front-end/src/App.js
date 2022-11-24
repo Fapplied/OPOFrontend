@@ -32,9 +32,18 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
-      <ProblemList/>
+
+        <NavBar/>
+          <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<ProblemList/>}></Route>
+          <Route path="/search" element={<SearchResult params={params} setParams={setParams} />}></Route>
+          <Route path="/about" element={<About/>}></Route>
+        </Routes>
+      <Footer/>
+    </div>
+    </BrowserRouter>
       <Footer />
     </div>
   );
