@@ -26,7 +26,6 @@ const ConsList = ({problem}) => {
     }
   }
   
-  
   //Call back end and ask for list of cons. Add its own controller.
   return (
     <div >

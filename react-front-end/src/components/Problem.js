@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ProsList from "./ProsList";
 import ConsList from "./ConsList";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -7,11 +7,12 @@ import axios from "axios";
 
 const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
-const Problem = ( {problem}) => {
-  // const [thisProblem, setThisProblem] = useState( problem?? []);
+const Problem = ( {problem, getProblems}) => {
+  const {problemId} = problem
   
+
   const clickDelete = async () => {
-    const {status } = await axios.delete(PROBLEMS_ENDPOINT + `/${problem.id}`)
+    const {status } = await axios.delete(PROBLEMS_ENDPOINT + `/${problemId}`)
     if(status === 204) {
       getProblems();
     }

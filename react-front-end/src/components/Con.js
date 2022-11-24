@@ -31,6 +31,7 @@ const Con = ({ con }) => {
   }, [])
   
   return (
+    
     <div style={{display: 'flex'}}>
       <div>
       <IconButton onClick={handleUpVoteClick} >
