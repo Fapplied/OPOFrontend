@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #f8f6f6;
 }
 
 ul {
@@ -8,10 +9,23 @@ ul {
 
 .problem-lists {
   display: flex;
-  
-}
-.problem-header {
-  align-items: center;
   justify-content: center;
+}
+
+#Problem-List {
+ padding: 0;
+}
+
+.problem-header {
+  justify-content: center;
+  border-radius: 0.5em;
+  background-color: #c8f1e3;
+}
+
+.opinions {
+  width: 300px;
+  border: solid;
+  border-radius: 7px;
+  align-self: center;
 }
 

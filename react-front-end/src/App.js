@@ -5,6 +5,7 @@ import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProblemList from './components/ProblemList'
+import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import axios from "axios"
 
@@ -36,12 +37,18 @@ function App() {
 
   return (
     <div className="App">
-      <div id="signInDiv"></div>
+     
         {/*<NavBar/>*/}
           <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<ProblemList/>}></Route>
+          <Route path="/" element={
+            <>
+            <div id="signInDiv"></div>
+            <HomePage/>
+          </>
+          }></Route>
+          <Route path="/user" element={<ProblemList/>}></Route>
           {/*<Route path="/search" element={<SearchResult params={params} setParams={setParams} />}></Route>*/}
           {/*<Route path="/about" element={<About/>}></Route>*/}
         </Routes>

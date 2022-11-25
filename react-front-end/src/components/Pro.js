@@ -44,7 +44,7 @@ const Pro = ({pro}) => {
         </IconButton>
         <p style={{color: "black"}}>{likes}</p>
       </div>
-      <p>{title}</p>
+      <p className="opinions">{title}</p>
       <IconButton  >
         <DeleteIcon />
       </IconButton>
