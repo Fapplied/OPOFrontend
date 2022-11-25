@@ -32,7 +32,11 @@ function App() {
   }
   
   useEffect(() => {
-    console.log("CURRENT USER IS: ",user)
+    console.log("CURRENT USER IS: ", user)
+    
+
+
+    
     if (user === false) {
       console.log("WE ARE NOT IN")
          /* global google */
@@ -58,7 +62,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-                {token === false || user === false && <div id="signInDiv"></div>}
+                {token === false || user === false && <div className="signInDiv"></div>}
                 {user !== false && <button onClick={handleSignOut}>Sign Out</button> }
                 {user === false ? <HomePage /> : <ProblemList />}
           </>
