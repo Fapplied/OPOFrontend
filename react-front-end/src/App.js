@@ -10,15 +10,15 @@ import Footer from "./components/Footer";
 import axios from "axios"
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(false)
 
   const handleCallbackResponseGoogle = async (response) => {
     var user = jwtDecode(response.credential);
     //try 
-   var test = await axios.post('https://localhost:7057/api/Users', { Name:user.name, GoogleId:user.sub, Token: response.credential})
+   var UserResponse = await axios.post('https://localhost:7057/api/Users', { Name:user.name, GoogleId:user.sub, Token: response.credential})
     // catch this is where we end up if we send ba token
     // var test = await axios.get('https://localhost:7057/api/Users')
-    console.log({test})
+    console.log({UserResponse})
     return setUser(user);
   }
   
@@ -44,11 +44,11 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-            <div id="signInDiv"></div>
-            <HomePage/>
+            {user === false ? <div id="signInDiv"></div> : <div id="signOutDiv"></div> }
+                {user === false ? <HomePage /> : <ProblemList />}
           </>
           }></Route>
-          <Route path="/user" element={<ProblemList/>}></Route>
+          {/* <Route path="/user" element={</>}></Route> */}
           {/*<Route path="/search" element={<SearchResult params={params} setParams={setParams} />}></Route>*/}
           {/*<Route path="/about" element={<About/>}></Route>*/}
         </Routes>
