@@ -17,9 +17,15 @@ const ProblemList = () => {
 
   const addProblem = async (problem) => {
     // adds new con to beginning of problems array
-    const {status} = await axios.post(PROBLEMS_ENDPOINT + '?userId=2', problem)
+        const tokenRaw = localStorage.getItem("Token");
+    const token = tokenRaw != null ? jwtDecode(tokenRaw) : false;
+
+    if (token && token.type !== "Error") {
+      console.log("WE ARE SIGNED IN")
+          const {data, status} = await axios.get(PROBLEMS_ENDPOINT);
     if (status === 200) {
-      getProblems()
+      setProblems(data)
+    }
     }
     setProblems([problem, ...problems]);
   }

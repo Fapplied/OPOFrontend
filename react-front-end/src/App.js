@@ -8,22 +8,34 @@ import ProblemList from './components/ProblemList'
 import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import axios from "axios"
+import { Button } from '@mui/material/Button';
 
 function App() {
-  const [user, setUser] = useState(false)
+  const [token, setToken] = useState(localStorage.getItem("Token"))
+  const [user, setUser] = useState(false);
 
   const handleCallbackResponseGoogle = async (response) => {
-    var user = jwtDecode(response.credential);
+    var userCallback = jwtDecode(response.credential);
     //try 
-   var UserResponse = await axios.post('https://localhost:7057/api/Users', { Name:user.name, GoogleId:user.sub, Token: response.credential})
+    var UserResponse = await axios.post('https://localhost:7057/api/Users', { Name: userCallback.name, GoogleId: userCallback.sub, Token: response.credential })
+    localStorage.setItem("Token",response.credential)
     // catch this is where we end up if we send ba token
     // var test = await axios.get('https://localhost:7057/api/Users')
     console.log({UserResponse})
-    return setUser(user);
+    return setUser(userCallback);
+  }
+
+  const handleSignOut = () => {
+    localStorage.removeItem("Token");
+    setToken(false);
+    setUser(false);
   }
   
   useEffect(() => {
-   /* global google */
+    console.log("USER HAS BECOME ??? ",user)
+    if (user === false) {
+      console.log("WE ARE NOT IN")
+         /* global google */
     google.accounts.id.initialize({
       client_id: "1061925551073-28j75e6a29ukrfosq7otehkbe05auqj3.apps.googleusercontent.com",
       callback: handleCallbackResponseGoogle
@@ -33,7 +45,9 @@ function App() {
       document.getElementById("signInDiv"),
       { theme: "outline", size: "large" }
     );
-  },[])
+    }
+
+  }, [])
 
   return (
     <div className="App">
@@ -44,7 +58,8 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-            {user === false ? <div id="signInDiv"></div> : <div id="signOutDiv"></div> }
+                {token === false || user === false && <div id="signInDiv"></div>}
+                {user !== false && <button onClick={handleSignOut}>Sign Out</button> }
                 {user === false ? <HomePage /> : <ProblemList />}
           </>
           }></Route>
