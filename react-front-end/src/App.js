@@ -12,17 +12,17 @@ import { Button } from '@mui/material/Button';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("Token"))
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(token !== null ? jwtDecode(token):false);
 
   const handleCallbackResponseGoogle = async (response) => {
     var userCallback = jwtDecode(response.credential);
     //try 
-    var UserResponse = await axios.post('https://localhost:7057/api/Users', { Name: userCallback.name, GoogleId: userCallback.sub, Token: response.credential })
+    var UserResponse = await axios.post('https://opobackend.azurewebsites.net/api/Users', { Name: userCallback.name, GoogleId: userCallback.sub, Token: response.credential })
     localStorage.setItem("Token",response.credential)
     // catch this is where we end up if we send ba token
     // var test = await axios.get('https://localhost:7057/api/Users')
-    console.log({UserResponse})
-    return setUser(userCallback);
+    console.log({UserResponse, userCallback})
+    return setUser(UserResponse);
   }
 
   const handleSignOut = () => {
@@ -32,7 +32,7 @@ function App() {
   }
   
   useEffect(() => {
-    console.log("USER HAS BECOME ??? ",user)
+    console.log("CURRENT USER IS: ",user)
     if (user === false) {
       console.log("WE ARE NOT IN")
          /* global google */
@@ -47,7 +47,7 @@ function App() {
     );
     }
 
-  }, [])
+  }, [user])
 
   return (
     <div className="App">

@@ -26,7 +26,7 @@ const HomePage = () => {
   return (
     <div>
       <img src={logo} alt="logo" width="500px"/>
-      <ul id='Problem-List' style={{ backgroundColor: "red" }}>
+      <ul id='Problem-List' style={{  }}>
         {problems.map(problem => <li key={problem.id}><ProblemHomePage getProblems={getProblems} problem={problem}/></li>)}
       </ul>
     </div>
