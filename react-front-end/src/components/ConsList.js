@@ -30,7 +30,7 @@ const ConsList = ({problem}) => {
   return (
     <div >
       {conList && <h3>Cons</h3>}
-      {conList && <ul id='Cons-List'>
+      {conList && <ul className='Cons-List'>
         { cons.map(con =>  <li ><Con con={con} /></li>)}
       </ul>}
       
