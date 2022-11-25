@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import ProsList from "./ProsList";
 import ConsList from "./ConsList";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {IconButton} from "@mui/material";
+import {Avatar, IconButton} from "@mui/material";
 import axios from "axios";
+
 
 const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
 const Problem = ({problem, getProblems}) => {
-  const {problemId} = problem
+  const {problemId, userId} = problem
 
 
   const clickDelete = async () => {
@@ -21,6 +22,7 @@ const Problem = ({problem, getProblems}) => {
   return (
     <div>
       <div className='problem-header' style={{display: "flex"}}>
+        <Avatar style={{border: 'solid grey' , margin: '1vw' }} src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}/>
         <h4>{problem.title}</h4>
         <IconButton onClick={clickDelete}>
           <DeleteIcon/>
