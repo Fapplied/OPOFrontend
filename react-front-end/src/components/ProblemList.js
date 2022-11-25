@@ -11,9 +11,9 @@ const ProblemList = () => {
   const [problems, setProblems] = useState([]);
 
   const getProblems = async () => {
-      const testID = localStorage.getItem("Token") ? jwtDecode(localStorage.getItem("Token")) : "";
-  console.log({ PROBLEMS_ENDPOINT, testID });
-    const { data, status } = await axios.get(PROBLEMS_ENDPOINT + `/${testID !== ""? testID.userId : testID}`);
+  //     const testID = localStorage.getItem("User") !== null ? localStorage.getItem("User") : "";
+  // console.log({ PROBLEMS_ENDPOINT, testID: testID.userid });
+    const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
     if (status === 200) {
       setProblems(data);
     }
@@ -24,7 +24,7 @@ const ProblemList = () => {
 
     const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
     if (status === 200) {
-      setProblems(data);
+      setProblems(data.p);
     }
     setProblems([problem, ...problems]);
   };
@@ -44,11 +44,18 @@ const ProblemList = () => {
     <div>
       <ProblemFrom addProblem={addProblem} />
       <ul className="Problem-List">
-        {problems.map((problem) => (
+        {problems.map((problem) => {
+          if (problem.userId === 6) {
+                        return(
           <li key={problem.id}>
             <Problem getProblems={getProblems} problem={problem} />
           </li>
-        ))}
+        )
+          }
+            
+        }
+        
+        )}
       </ul>
     </div>
   );
