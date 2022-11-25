@@ -33,17 +33,16 @@ function App() {
   
   useEffect(() => {
     console.log("CURRENT USER IS: ", user)
-    
-
-
-    
-    if (user === false) {
-      console.log("WE ARE NOT IN")
-         /* global google */
-    google.accounts.id.initialize({
+        google.accounts.id.initialize({
       client_id: "1061925551073-28j75e6a29ukrfosq7otehkbe05auqj3.apps.googleusercontent.com",
       callback: handleCallbackResponseGoogle
     })
+
+
+
+    if (user === false) {
+      console.log("WE ARE NOT IN")
+         /* global google */
 
     google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
