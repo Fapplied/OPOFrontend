@@ -29,3 +29,7 @@ ul {
   align-self: center;
 }
 
+img {
+  filter: hue-rotate(100deg) saturate(40%);
+}
+
