@@ -33,22 +33,23 @@ function App() {
   
   useEffect(() => {
     console.log("CURRENT USER IS: ", user)
-        google.accounts.id.initialize({
+        if (user === false) {
+          console.log("WE ARE NOT IN")
+          
+    }
+         /* global google */   
+    google.accounts.id.initialize({
       client_id: "1061925551073-28j75e6a29ukrfosq7otehkbe05auqj3.apps.googleusercontent.com",
       callback: handleCallbackResponseGoogle
     })
 
-
-
-    if (user === false) {
-      console.log("WE ARE NOT IN")
-         /* global google */
-
-    google.accounts.id.renderButton(
+        google.accounts.id.renderButton(
       document.getElementById("signInDiv"),
       { theme: "outline", size: "large" }
     );
-    }
+
+
+
 
   }, [user])
 
@@ -61,7 +62,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-                {token === false || user === false && <div className="signInDiv"></div>}
+                {token === false || user === false && <div id="signInDiv"></div>}
                 {user !== false && <button onClick={handleSignOut}>Sign Out</button> }
                 {user === false ? <HomePage /> : <ProblemList />}
           </>
