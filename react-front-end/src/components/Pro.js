@@ -18,8 +18,8 @@ const Pro = ({pro}) => {
 
   const handleUpVoteClick = async () => {
     const {data, status} = await axios.post(Likes_ENDPOINT + `?proId=${proId}`, 2);
-    setIsLiked(prevState => !prevState)
-    if (status === 201) {
+    if (status === 201 || status === 204) {
+      setIsLiked(prevState => !prevState)
       getLikes()
       console.log(isLiked)
     }
@@ -27,6 +27,7 @@ const Pro = ({pro}) => {
   const getLikes = async () => {
     const {data, status} = await axios.get(Likes_ENDPOINT + `/${proId}`);
     if(status === 200 && Number.isInteger(data.length)) {
+      console.log(data.length)
       setLikes(data.length)
     }
   }

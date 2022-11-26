@@ -5,7 +5,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {Avatar, IconButton} from "@mui/material";
 import axios from "axios";
 
-
 const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
 const Problem = ({problem, getProblems}) => {
