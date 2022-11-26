@@ -17,7 +17,8 @@ function App() {
   const handleCallbackResponseGoogle = async (response) => {
     var userCallback = jwtDecode(response.credential);
     //try 
-    var UserResponse = await axios.post('https://opobackend.azurewebsites.net/api/Users', { Name: userCallback.name, GoogleId: userCallback.sub, Token: response.credential })
+    var UserResponse = await axios.post('https://opobackend.azurewebsites.net/api/Users', 
+      { Name: userCallback.name, GoogleId: userCallback.sub, Token: response.credential })
     localStorage.setItem("Token",response.credential)
     localStorage.setItem("User",UserResponse)
     // catch this is where we end up if we send ba token
