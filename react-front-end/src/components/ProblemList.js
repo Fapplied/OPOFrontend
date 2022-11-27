@@ -23,7 +23,7 @@ const ProblemList = () => {
     // adds new con to beginning of problems array
     const { status} = await axios.post(PROBLEMS_ENDPOINT, problem)
     if (status === 202) {
-      const {  data } = await axios.get(PROBLEMS_ENDPOINT);
+      // const {  data } = await axios.get(PROBLEMS_ENDPOINT);
       // setProblems([problem, ...problems]);
       // setProblems(data.p);
       getProblems()
