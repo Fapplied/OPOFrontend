@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
-import {IconButton} from "@mui/material";
+import {Avatar, IconButton} from "@mui/material";
 import axios from "axios";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
@@ -16,10 +16,9 @@ const Con = ({ con }) => {
 
   const handleUpVoteClick = async () => {
     const { data, status} = await axios.post(Likes_ENDPOINT + `?conId=${conId}`, 1);
-    setIsLiked(prevState => !prevState)
-    if (status === 201) {
+    if (status === 201 || status === 204) {
       getLikes()
-      console.log(isLiked)
+      setIsLiked(prevState => !prevState)
     }
   }
 
@@ -38,6 +37,7 @@ const Con = ({ con }) => {
   return (
 
     <div style={{display: 'flex'}}>
+      <Avatar style={{border: 'solid grey' , margin: '1vw' }} src={`https://avatars.dicebear.com/api/open-peeps/${conId}.svg`}/>
       <div>
         <IconButton onClick={handleUpVoteClick} >
           {isLiked ? <KeyboardDoubleArrowUpOutlinedIcon/> :<KeyboardArrowUpOutlinedIcon/> }

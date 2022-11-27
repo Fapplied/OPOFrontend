@@ -21,7 +21,7 @@ const Problem = ({problem, getProblems}) => {
   return (
     <div>
       <div className='problem-header' style={{display: "flex"}}>
-        <Avatar style={{border: 'solid grey' , margin: '1vw' }} src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}/>
+        <Avatar style={{border: 'solid grey' , margin: '1vw'}} src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}/>
         <h4>{problem.title}</h4>
         <IconButton onClick={clickDelete}>
           <DeleteIcon/>
