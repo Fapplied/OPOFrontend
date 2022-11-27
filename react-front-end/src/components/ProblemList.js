@@ -21,12 +21,12 @@ const ProblemList = () => {
 
   const addProblem = async (problem) => {
     // adds new con to beginning of problems array
-
-    const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
-    if (status === 200) {
+    const { status} = await axios.post(PROBLEMS_ENDPOINT, problem)
+    if (status === 202) {
+      const {  data } = await axios.get(PROBLEMS_ENDPOINT);
+      setProblems([problem, ...problems]);
       setProblems(data.p);
     }
-    setProblems([problem, ...problems]);
   };
 
   useEffect(() => {
