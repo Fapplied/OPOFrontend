@@ -11,7 +11,7 @@ const ConsList = ({problem}) => {
   const {conList, problemId} = problem
   
   const [cons, setCons] = useState( ()=> {
-    return conList??[]})
+    return conList ?? []})
   
   
   const addCon = async (con) => {
@@ -19,7 +19,6 @@ const ConsList = ({problem}) => {
     const {status } = await axios.post(Cons_ENDPOINT + `?problemId=${problemId}`, con)
     if(status === 201) {
       const { data} = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`)
-
       const {conList: theList} = data
       
       setCons([ ...theList]);

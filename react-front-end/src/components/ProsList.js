@@ -17,12 +17,11 @@ const ProList = ({problem}) => {
   const addPro = async (pro) => {
     // adds new pro to beginning of cons array
     const {status} = await axios.post(Pro_ENDPOINT + `?problemId=${problemId}`, pro)
-    const {status: fetchWorked, data} = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`)
-    if(fetchWorked) {
-      
+    if(status === 201) {
+      const { data} = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`)
+      const {proList: theList} = data
+      setPros([...theList]);
     }
-    const {proList: theList} = data
-    setPros([...theList]);
   }
 
   //Call back end and ask for list of Pros. Add its own controller.
