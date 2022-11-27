@@ -14,7 +14,7 @@ const ProblemHomePage = ({problem, getProblems}) => {
   return (
     <div>
       <div className='problem-header' style={{display: "flex"}}>
-        <Avatar style={{border: 'solid grey', marginRight: '2vw' }} src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}/>
+        <Avatar style={{border: 'solid grey', marginRight: '2vw', marginTop: '1vw' }} src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}/>
         <p></p>
         <h4>{problem.title}</h4>
       </div>

@@ -10,7 +10,6 @@ const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 const Problem = ({problem, getProblems}) => {
   const {problemId, userId} = problem
 
-
   const clickDelete = async () => {
     const {status} = await axios.delete(PROBLEMS_ENDPOINT + `/${problemId}`)
     if (status === 204) {
