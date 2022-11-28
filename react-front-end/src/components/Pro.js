@@ -41,13 +41,13 @@ const Pro = ({pro}) => {
   return (
     <div style={{display: 'flex'}}>
       <Avatar style={{border: 'solid grey' , margin: '1vw' }} src={`https://avatars.dicebear.com/api/open-peeps/${proId}.svg`}/>
-
+      {location.pathname === "/user" ? <br /> :
       <div>
         <IconButton onClick={handleUpVoteClick} >
           {isLiked ? <KeyboardDoubleArrowUpOutlinedIcon/> :<KeyboardArrowUpOutlinedIcon/> }
         </IconButton>
         <p style={{color: "black"}}>{likes}</p>
-      </div>
+      </div>}
       <p className="opinions">{title}</p>
       {location.pathname === "/user" ? 
       <IconButton  >
