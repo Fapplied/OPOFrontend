@@ -3,16 +3,20 @@ import ProblemHomePage from "./Problem";
 import axios, { Axios } from "axios";
 import logo from "../OPOlogo.jpg";
 
-const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
-
 const UserProblems = ({ user }) => {
+  //   console.log({ user2: user });
+  const PROBLEMS_ENDPOINT =
+    "https://opobackend.azurewebsites.net/api/Problems/user";
+
+  console.log("GET PROBLEMS URL", PROBLEMS_ENDPOINT + `/${user.userId}`);
+
   const [problems, setProblems] = useState([]);
 
   const getProblems = async () => {
-    const { data, status } = await axios.get(
-      PROBLEMS_ENDPOINT + `/${user.UserId}`
-    );
-    console.log("GET PROBLEMS URL", PROBLEMS_ENDPOINT + `/${user.UserId}`);
+    const { data, status } = await axios
+      .get(PROBLEMS_ENDPOINT + `/${user.userId}`)
+      .then((r) => r)
+      .catch((e) => console.log({ AxiosError: e }));
     if (status === 200) {
       setProblems(data);
     }

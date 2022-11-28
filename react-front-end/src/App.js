@@ -12,7 +12,7 @@ import NavBar from "./components/NavBar";
 import UserProblems from "./components/UserProblems";
 
 function App() {
-  const [user, setUser] = useState(getLS("User"));
+  const [user, setUser] = useState(getLS("User2"));
 
   console.log({ user });
 
@@ -26,7 +26,9 @@ function App() {
             <Route path="/" element={<>{<HomePage user={user} />}</>}></Route>
             <Route
               path="/user"
-              element={<>{user ? <UserProblems /> : "Please sign in"}</>}
+              element={
+                <>{user ? <UserProblems user={user} /> : "Please sign in"}</>
+              }
             ></Route>
             {/* <Route path="/user" element={</>}></Route> */}
             {/*<Route path="/search" element={<SearchResult params={params} setParams={setParams} />}></Route>*/}
