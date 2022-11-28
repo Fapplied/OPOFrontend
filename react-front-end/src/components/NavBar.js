@@ -1,5 +1,5 @@
 import logo from "../OPOlogo.jpg";
-import "./nav.css";
+import "../App.css";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { removeLS, getLS, setLS } from "../helpers/storage";
 import jwtDecode from "jwt-decode";
@@ -41,7 +41,13 @@ const NavBar = ({ setUser, user }) => {
   return (
     <>
       <nav className="navBar">
-        <img src={logo} width="100px" height="100px" alt="logo" />
+        <img
+          className="Logo"
+          src={logo}
+          width="100px"
+          height="100px"
+          alt="logo"
+        />
         <ul className="nav__ul">
           <li>
             <Link to="/">Home</Link>
@@ -53,7 +59,6 @@ const NavBar = ({ setUser, user }) => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            {" "}
             {user === false && <div id="signInDiv"></div>}
             {user !== false && (
               <button onClick={handleSignOut}>Sign Out</button>

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import ProblemHomePage from "./Problem";
-import axios, { Axios } from "axios";
+import ProblemHomePage from "./ProblemHomePage";
+import axios from "axios";
 import logo from "../OPOlogo.jpg";
 
-const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
+const ProfileEndpoint = "https://opobackend.azurewebsites.net/api/Problems";
+
+// name picture
 
 const HomePage = () => {
   const [problems, setProblems] = useState([]);
 
   const getProblems = async () => {
-    const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
+    const { data, status } = await axios.get(ProfileEndpoint);
     if (status === 200) {
       setProblems(data);
     }
@@ -22,7 +24,7 @@ const HomePage = () => {
   //fetch and Map problems
   return (
     <div>
-      {/* <img src={logo} alt="logo" width="500px" /> */}
+      <img src={logo} alt="logo" width="500px" />
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
           <li key={problem.id}>
