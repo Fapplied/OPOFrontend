@@ -34,8 +34,8 @@ const Problem = ({ user, problem, getProblems }) => {
         )}
       </div>
       <div className="problem-lists">
-        <ProsList className="list-c" problem={problem} />
-        <ConsList className="list-c" problem={problem} />
+        <ProsList className="list-c" user={user} problem={problem} />
+        <ConsList className="list-c" user={user} problem={problem} />
       </div>
     </div>
   );

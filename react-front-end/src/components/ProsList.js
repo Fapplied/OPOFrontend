@@ -6,8 +6,10 @@ import ProForm from "./ProForm";
 const Pro_ENDPOINT = "https://opobackend.azurewebsites.net/api/Pros";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
-const ProList = ({ problem }) => {
+const ProList = ({ problem, user }) => {
   const { proList, problemId } = problem;
+  console.log(user);
+  const { userId } = user;
 
   const [pros, setPros] = useState(() => {
     return proList ?? [];
@@ -21,7 +23,7 @@ const ProList = ({ problem }) => {
     );
     if (status === 201) {
       const { data } = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`);
-      const theList = data.proList;
+      const { proList: theList } = data;
       setPros([...theList]);
     }
   };

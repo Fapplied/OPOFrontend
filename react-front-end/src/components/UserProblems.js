@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProblemHomePage from "./Problem";
 import axios, { Axios } from "axios";
 import logo from "../OPOlogo.jpg";
+import ProblemFrom from "./ProblemFrom";
 
 const UserProblems = ({ user }) => {
   //   console.log({ user2: user });
@@ -29,6 +30,7 @@ const UserProblems = ({ user }) => {
   //fetch and Map problems
   return (
     <div>
+      <ProblemFrom/>
       {/* <img src={logo} alt="logo" width="500px" /> */}
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
