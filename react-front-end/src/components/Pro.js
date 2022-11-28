@@ -8,6 +8,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
+import { getLS } from "../helpers/storage";
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/pro";
 
@@ -15,6 +16,7 @@ const Pro = ({ pro }) => {
   const { title, proId } = pro;
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const user = getLS("User2");
 
   const location = useLocation();
 
@@ -40,13 +42,15 @@ const Pro = ({ pro }) => {
   }, []);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className="ProConList-Item" style={{ display: "flex" }}>
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
         src={`https://avatars.dicebear.com/api/open-peeps/${proId}.svg`}
       />
-      {location.pathname === "/" ? (
-        <br />
+      {location.pathname === "/" && !user ? (
+        <div>
+          <p style={{ color: "black" }}>{likes}</p>
+        </div>
       ) : (
         <div>
           <IconButton onClick={handleUpVoteClick}>

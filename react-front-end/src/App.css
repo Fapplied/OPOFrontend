@@ -16,6 +16,11 @@ ul > li > button {
   border-radius: 5px;
 }
 
+.ProConList-Item {
+  width: 112%;
+  justify-content: space-evenly;
+}
+
 .problem-lists {
   display: flex;
   justify-content: center;

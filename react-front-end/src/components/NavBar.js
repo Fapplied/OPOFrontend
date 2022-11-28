@@ -24,6 +24,7 @@ const NavBar = ({ setUser, user }) => {
   const handleSignOut = () => {
     removeLS("User");
     removeLS("Token");
+    removeLS("User2");
     setUser(false);
   };
 

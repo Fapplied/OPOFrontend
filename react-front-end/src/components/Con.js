@@ -35,7 +35,7 @@ const Con = ({ con }) => {
   }, []);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className="ProConList-Item" style={{ display: "flex" }}>
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
         src={`https://avatars.dicebear.com/api/open-peeps/${conId}.svg`}
