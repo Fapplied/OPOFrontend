@@ -15,12 +15,15 @@ const NavBar = ({ setUser, user }) => {
       response.credential
     );
     console.log({ backendResponse });
-    setLS("User", backendResponse);
+    setLS("User", localTokenData); // google info
+    setLS("User2", backendResponse.data); // contains our user info with its own userid
+    setLS("Token", response.credential); // raw token that should be send for sensitive requests
     return setUser(backendResponse);
   };
 
   const handleSignOut = () => {
     removeLS("User");
+    removeLS("Token");
     setUser(false);
   };
 
@@ -54,9 +57,6 @@ const NavBar = ({ setUser, user }) => {
           </li>
           <li>
             <Link to="/search">Search</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
           </li>
           <li>
             {user === false && <div id="signInDiv"></div>}

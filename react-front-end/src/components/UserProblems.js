@@ -5,11 +5,14 @@ import logo from "../OPOlogo.jpg";
 
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
-const HomePage = ({ user }) => {
+const UserProblems = ({ user }) => {
   const [problems, setProblems] = useState([]);
 
   const getProblems = async () => {
-    const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
+    const { data, status } = await axios.get(
+      PROBLEMS_ENDPOINT + `/${user.UserId}`
+    );
+    console.log("GET PROBLEMS URL", PROBLEMS_ENDPOINT + `/${user.UserId}`);
     if (status === 200) {
       setProblems(data);
     }
@@ -38,4 +41,4 @@ const HomePage = ({ user }) => {
   );
 };
 
-export default HomePage;
+export default UserProblems;
