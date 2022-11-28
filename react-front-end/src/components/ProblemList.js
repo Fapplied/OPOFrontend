@@ -11,8 +11,8 @@ const ProblemList = () => {
   const [problems, setProblems] = useState([]);
 
   const getProblems = async () => {
-  //     const testID = localStorage.getItem("User") !== null ? localStorage.getItem("User") : "";
-  // console.log({ PROBLEMS_ENDPOINT, testID: testID.userid });
+    //     const testID = localStorage.getItem("User") !== null ? localStorage.getItem("User") : "";
+    // console.log({ PROBLEMS_ENDPOINT, testID: testID.userid });
     const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
     if (status === 200) {
       setProblems(data);
@@ -21,12 +21,14 @@ const ProblemList = () => {
 
   const addProblem = async (problem) => {
     // adds new con to beginning of problems array
+    const { status } = await axios.post(PROBLEMS_ENDPOINT, problem)
+    if (status === 202) {
+      // const {  data } = await axios.get(PROBLEMS_ENDPOINT);
+      // setProblems([problem, ...problems]);
+      // setProblems(data.p);
+      getProblems()
 
-    const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
-    if (status === 200) {
-      setProblems(data.p);
     }
-    setProblems([problem, ...problems]);
   };
 
   useEffect(() => {
@@ -45,16 +47,15 @@ const ProblemList = () => {
       <ProblemFrom addProblem={addProblem} />
       <ul className="Problem-List">
         {problems.map((problem) => {
-          if (problem.userId === 6) {
-                        return(
-          <li key={problem.id}>
-            <Problem getProblems={getProblems} problem={problem} />
-          </li>
-        )
+            if (problem.userId === 6) {
+              return (
+                <li key={problem.id}>
+                  <Problem getProblems={getProblems} problem={problem} />
+                </li>
+              )
+            }
+
           }
-            
-        }
-        
         )}
       </ul>
     </div>

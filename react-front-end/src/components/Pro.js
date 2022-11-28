@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Avatar, IconButton} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Route, useLocation, Link } from "react-router-dom";
 import { ArrowUpwardOutlined} from "@mui/icons-material";
 import axios from "axios";
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -15,6 +16,8 @@ const Pro = ({pro}) => {
   const {title, proId} = pro
   const [likes, setLikes] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
+
+  const location = useLocation()
 
   const handleUpVoteClick = async () => {
     const {data, status} = await axios.post(Likes_ENDPOINT + `?proId=${proId}`, 2);
@@ -38,17 +41,18 @@ const Pro = ({pro}) => {
   return (
     <div style={{display: 'flex'}}>
       <Avatar style={{border: 'solid grey' , margin: '1vw' }} src={`https://avatars.dicebear.com/api/open-peeps/${proId}.svg`}/>
-
+      {location.pathname === "/user" ? <br /> :
       <div>
         <IconButton onClick={handleUpVoteClick} >
           {isLiked ? <KeyboardDoubleArrowUpOutlinedIcon/> :<KeyboardArrowUpOutlinedIcon/> }
         </IconButton>
         <p style={{color: "black"}}>{likes}</p>
-      </div>
+      </div>}
       <p className="opinions">{title}</p>
+      {location.pathname === "/user" ? 
       <IconButton  >
         <DeleteIcon />
-      </IconButton>
+      </IconButton> : <br /> }
     </div>
   );
 };

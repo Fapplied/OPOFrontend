@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProblemHomePage from "./ProblemHomePage";
-import axios, { Axios } from "axios";
+import axios from "axios";
+import logo from "../OPOlogo.jpg";
 
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
@@ -21,6 +22,7 @@ const HomePage = () => {
   //fetch and Map problems
   return (
     <div>
+      <img src={logo} alt="logo" width="500px" />
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
           <li key={problem.id}>
