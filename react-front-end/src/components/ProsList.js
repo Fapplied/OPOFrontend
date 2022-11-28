@@ -5,7 +5,8 @@ import ProForm from "./ProForm";
 
 const ProList = ({problem, user}) => {
   const {proList, problemId} = problem;
-  const {userId} = user.data;
+  console.log(user)
+  const {userId} = user;
 
   const [pros, setPros] = useState(() => {
     return proList ?? []
