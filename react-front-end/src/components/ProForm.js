@@ -22,8 +22,8 @@ const ProForm = ({ addPro }) => {
   }
 
   return (
-    <div className="form">
-      <form className="Pro-form" onSubmit={handleSubmit}>
+    <div className="prosconForm">
+      <form className="Pro-form problemlist-form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="task"
@@ -31,7 +31,9 @@ const ProForm = ({ addPro }) => {
           value={pro.Advantage}
           onChange={handleTaskInputChange}
         />
-        <Button type="submit">Post</Button>
+        <Button className="prosconButton" type="submit">
+          ✚
+        </Button>
       </form>
     </div>
   );

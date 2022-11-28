@@ -30,20 +30,23 @@ const ConsList = ({ problem, user }) => {
 
   //Call back end and ask for list of cons. Add its own controller.
   return (
-    <div>
-      <h3>Cons</h3>
-      {conList && (
-        <ul className="Cons-List">
-          {cons.map((con) => (
-            <li>
-              <Con con={con} />
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <ConForm addCon={addCon} />
-    </div>
+    <>
+      <section className="ConSection">
+        <div className="ConsWrapper">
+          <h3>Cons</h3>
+          {conList && (
+            <ul className="Cons-List">
+              {cons.map((con) => (
+                <li>
+                  <Con con={con} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <ConForm addCon={addCon} />
+      </section>
+    </>
   );
 };
 

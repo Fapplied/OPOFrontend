@@ -29,20 +29,23 @@ const ProList = ({ problem, user }) => {
 
   //Call back end and ask for list of Pros. Add its own controller.
   return (
-    <div>
-      <h3>Pros</h3>
-      {proList && (
-        <ul className="Pros-List">
-          {pros.map((pro) => (
-            <li>
-              <Pro pro={pro} />
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <ProForm addPro={addPro} />
-    </div>
+    <>
+      <section className="ProSection">
+        <div className="ProsWrapper">
+          <h3>Pros</h3>
+          {proList && (
+            <ul className="Pros-List">
+              {pros.map((pro) => (
+                <li>
+                  <Pro pro={pro} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <ProForm addPro={addPro} />
+      </section>
+    </>
   );
 };
 

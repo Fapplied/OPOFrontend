@@ -21,8 +21,8 @@ const ConForm = ({ addCon }) => {
     }
   }
   return (
-    <div className="form">
-      <form className="todo-form" onSubmit={handleSubmit}>
+    <div className="prosconForm">
+      <form className="Con-form problemlist-form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="task"
@@ -30,7 +30,7 @@ const ConForm = ({ addCon }) => {
           value={con.Disadvantage}
           onChange={handleTaskInputChange}
         />
-        <Button type="submit">Post</Button>
+        <Button type="submit">✚</Button>
       </form>
     </div>
   );
