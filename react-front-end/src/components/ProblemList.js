@@ -6,10 +6,11 @@ import jwtDecode from "jwt-decode";
 
 const PROBLEMS_ENDPOINT = `https://opobackend.azurewebsites.net/api/Problems`;
 
-const ProblemList = () => {
+const ProblemList = ({user}) => {
 
   const [problems, setProblems] = useState([]);
-
+  const {userId } = user.data;
+  
   const getProblems = async () => {
     //     const testID = localStorage.getItem("User") !== null ? localStorage.getItem("User") : "";
     // console.log({ PROBLEMS_ENDPOINT, testID: testID.userid });
@@ -21,8 +22,9 @@ const ProblemList = () => {
 
   const addProblem = async (problem) => {
     // adds new con to beginning of problems array
-    const { status } = await axios.post(PROBLEMS_ENDPOINT, problem)
-    if (status === 202) {
+    const { status } = await axios.post(PROBLEMS_ENDPOINT + `?userId=${userId}`, problem)
+    if (status === 201) {
+      console.log('before the getProblem')
       // const {  data } = await axios.get(PROBLEMS_ENDPOINT);
       // setProblems([problem, ...problems]);
       // setProblems(data.p);
@@ -47,7 +49,7 @@ const ProblemList = () => {
       <ProblemFrom addProblem={addProblem} />
       <ul className="Problem-List">
         {problems.map((problem) => {
-            if (problem.userId === 6) {
+            if (problem.userId === userId) {
               return (
                 <li key={problem.id}>
                   <Problem getProblems={getProblems} problem={problem} />

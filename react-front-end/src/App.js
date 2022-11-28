@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<>{user === false ? <HomePage /> : <ProblemList />}</>}
+              element={<>{user === false ? <HomePage /> : <ProblemList user={user}/>}</>}
             ></Route>
             {/* <Route path="/user" element={</>}></Route> */}
             {/*<Route path="/search" element={<SearchResult params={params} setParams={setParams} />}></Route>*/}

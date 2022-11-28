@@ -3,6 +3,7 @@
     "eslint-config-salt": "^1.2.0"
   },
   "dependencies": {
-    "@mui/icons-material": "^5.10.15"
+    "@mui/icons-material": "^5.10.15",
+    "fast-stringify": "^2.0.0"
   }
 }

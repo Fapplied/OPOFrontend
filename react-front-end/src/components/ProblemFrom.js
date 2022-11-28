@@ -3,22 +3,22 @@ import Button from "@mui/material/Button";
 
 const ProblemFrom = ({addProblem}) => {
   const [problem, setProblem] = useState({
-    title: "",
+    Title: "",
   });
 
 
   function handleTaskInputChange(e) {
     // e.target.value contains new input from onChange
     // event for input elements
-    setProblem({...problem, title: e.target.value});
+    setProblem({...problem, Title: e.target.value});
   }
 
   function handleSubmit(e) {
     e.preventDefault(); // prevents browser refresh
     // trim() gets rid of string whitespace
-    if (problem.title.trim()) {
+    if (problem.Title.trim()) {
       addProblem({...problem});
-      setProblem({...problem, title: ""});
+      setProblem({...problem, Title: ""});
     }
   }
 
@@ -29,7 +29,7 @@ const ProblemFrom = ({addProblem}) => {
           type="text"
           name="task"
           placeholder='Problem'
-          value={problem.title}
+          value={problem.Title}
           onChange={handleTaskInputChange}
         />
         <Button type="submit">Post</Button>
