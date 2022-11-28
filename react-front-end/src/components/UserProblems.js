@@ -5,9 +5,13 @@ import logo from "../OPOlogo.jpg";
 import ProblemFrom from "./ProblemFrom";
 
 const UserProblems = ({ user }) => {
+  const {userId} = user;
   //   console.log({ user2: user });
   const PROBLEMS_ENDPOINT =
     "https://opobackend.azurewebsites.net/api/Problems/user";
+
+  const PROBLEMS_ENDPOINT2 = `https://opobackend.azurewebsites.net/api/Problems`;
+
 
   console.log("GET PROBLEMS URL", PROBLEMS_ENDPOINT + `/${user.userId}`);
 
@@ -23,6 +27,19 @@ const UserProblems = ({ user }) => {
     }
   };
 
+  const addProblem = async (problem) => {
+    // adds new con to beginning of problems array
+    const { status } = await axios.post(PROBLEMS_ENDPOINT2 + `?userId=${userId}`, problem)
+    if (status === 201) {
+      console.log('before the getProblem')
+      // const {  data } = await axios.get(PROBLEMS_ENDPOINT);
+      // setProblems([problem, ...problems]);
+      // setProblems(data.p);
+      getProblems()
+
+    }
+  };
+
   useEffect(() => {
     getProblems();
   }, []);
@@ -30,7 +47,7 @@ const UserProblems = ({ user }) => {
   //fetch and Map problems
   return (
     <div>
-      <ProblemFrom/>
+      <ProblemFrom addProblem={addProblem}/>
       {/* <img src={logo} alt="logo" width="500px" /> */}
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (

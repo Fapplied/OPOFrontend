@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProblemHomePage from "./ProblemHomePage";
+import Problem from "./ProblemHomePage";
 import axios from "axios";
 import logo from "../OPOlogo.jpg";
 
@@ -28,7 +28,7 @@ const HomePage = () => {
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
           <li key={problem.id}>
-            <ProblemHomePage getProblems={getProblems} problem={problem} />
+            <Problem getProblems={getProblems} problem={problem} />
           </li>
         ))}
       </ul>
