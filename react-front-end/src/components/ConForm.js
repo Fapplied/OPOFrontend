@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
-import Button from '@mui/material/Button';
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
 
-const ConForm = ({ addCon}) => {
+const ConForm = ({ addCon }) => {
   const [con, setCon] = useState({
-    Disadvantage: ""
+    Disadvantage: "",
   });
-  
 
   function handleTaskInputChange(e) {
     // e.target.value contains new input from onChange
@@ -22,12 +21,12 @@ const ConForm = ({ addCon}) => {
     }
   }
   return (
-    <div className='form'>
+    <div className="form">
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="task"
-          placeholder='Con'
+          placeholder="Con"
           value={con.Disadvantage}
           onChange={handleTaskInputChange}
         />

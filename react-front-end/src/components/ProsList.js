@@ -8,7 +8,6 @@ const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
 const ProList = ({ problem, user }) => {
   const { proList, problemId } = problem;
-  console.log(user);
   const { userId } = user;
 
   const [pros, setPros] = useState(() => {
