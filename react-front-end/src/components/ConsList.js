@@ -7,16 +7,18 @@ const Cons_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Cons';
 const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
 
-const ConsList = ({problem}) => {
+const ConsList = ({problem, user}) => {
   const {conList, problemId} = problem
+  const {userId} = user;
   
   const [cons, setCons] = useState( ()=> {
     return conList ?? []})
   
   
   const addCon = async (con) => {
+    const {disadvantage} = con;
     // adds new con to beginning of cons array
-    const {status } = await axios.post(Cons_ENDPOINT + `?problemId=${problemId}`, con)
+    const {status } = await axios.post(Cons_ENDPOINT + `?problemId=${problemId}`, {UserId: userId, Disadvantage: disadvantage })
     if(status === 201) {
       const { data} = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`)
       const {conList: theList} = data

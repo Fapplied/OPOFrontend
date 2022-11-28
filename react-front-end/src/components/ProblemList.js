@@ -52,7 +52,7 @@ const ProblemList = ({user}) => {
             if (problem.userId === userId) {
               return (
                 <li key={problem.id}>
-                  <Problem getProblems={getProblems} problem={problem} />
+                  <Problem getProblems={getProblems} user={user} problem={problem} />
                 </li>
               )
             }
