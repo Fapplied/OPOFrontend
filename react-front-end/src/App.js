@@ -1,14 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import jwtDecode from 'jwt-decode';
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProblemList from './components/ProblemList'
 import HomePage from "./components/HomePage";
-import Footer from "./components/Footer";
 import axios from "axios"
 import { Button } from '@mui/material/Button';
+import  StartPage from "./components/StartPage";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("Token"))
@@ -66,10 +64,11 @@ function App() {
             <>
                 {token === false || user === false && <div id="signInDiv"></div>}
                 {user !== false && <button onClick={handleSignOut}>Sign Out</button> }
-                {user === false ? <HomePage /> : <ProblemList />}
+                {/*{user === false ? <HomePage /> : <ProblemList />}*/}
+                {user === false ? <StartPage /> : <HomePage />}
           </>
           }></Route>
-          {/* <Route path="/user" element={</>}></Route> */}
+           <Route path="/user" element={<ProblemList/>}></Route> 
           {/*<Route path="/search" element={<SearchResult params={params} setParams={setParams} />}></Route>*/}
           {/*<Route path="/about" element={<About/>}></Route>*/}
         </Routes>

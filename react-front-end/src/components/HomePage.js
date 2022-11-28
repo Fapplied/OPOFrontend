@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import ProblemHomePage from "./ProblemHomePage";
 import axios, {Axios} from "axios";
 import logo from "../OPOlogo.jpg";
+import Problem from "./Problem";
 
 const PROBLEMS_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Problems';
 
@@ -27,7 +27,7 @@ const HomePage = () => {
     <div>
       <img src={logo} alt="logo" width="500px"/>
       <ul className='Problem-List' style={{  }}>
-        {problems.map(problem => <li key={problem.id}><ProblemHomePage getProblems={getProblems} problem={problem}/></li>)}
+        {problems.map(problem => <li key={problem.id}><Problem getProblems={getProblems} problem={problem}/></li>)}
       </ul>
     </div>
   );

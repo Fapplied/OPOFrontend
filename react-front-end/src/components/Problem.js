@@ -22,9 +22,10 @@ const Problem = ({problem, getProblems}) => {
       <div className='problem-header' style={{display: "flex"}}>
         <Avatar style={{border: 'solid grey' , margin: '1vw', marginTop: '1vw'  }} src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}/>
         <h4>{problem.title}</h4>
-        <IconButton onClick={clickDelete}>
-          <DeleteIcon/>
-        </IconButton>
+        {location.pathname === "/user" ?
+          <IconButton onClick={clickDelete} >
+            <DeleteIcon />
+          </IconButton> : <br /> }
       </div>
       <div className='problem-lists'>
         <ProsList className='list-c' problem={problem}/>

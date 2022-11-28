@@ -45,9 +45,10 @@ const Con = ({ con }) => {
         <p style={{color: "black"}}>{likes}</p>
       </div>
       <p className="opinions">{title}</p>
-      <IconButton >
-        <DeleteIcon/>
-      </IconButton>
+      {location.pathname === "/user" ?
+        <IconButton  >
+          <DeleteIcon />
+        </IconButton> : <br /> }
     </div>
   );
 };
