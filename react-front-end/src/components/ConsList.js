@@ -33,9 +33,9 @@ const ConsList = ({ problem, user, getProblems }) => {
   }
 
 
-  //Call back end and ask for list of cons. Add its own controller.
   return (
-    <div>
+    <section className="ConSection">
+    <div className="ConsWrapper">
       <h3>Cons</h3>
       {conList && (
         <ul className="Cons-List">
@@ -46,9 +46,9 @@ const ConsList = ({ problem, user, getProblems }) => {
           ))}
         </ul>
       )}
-
-      <ConForm addCon={addCon} />
     </div>
+      <ConForm addCon={addCon} />
+    </section>
   );
 };
 

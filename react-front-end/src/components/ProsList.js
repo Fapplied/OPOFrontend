@@ -31,9 +31,9 @@ const ProList = ({ problem, user, getProblems}) => {
     setPros([...theList]);
   }
 
-  //Call back end and ask for list of Pros. Add its own controller.
   return (
-    <div>
+    <section className="ProSection">
+    <div className="ProsWrapper">
       <h3>Pros</h3>
       {proList && (
         <ul className="Pros-List">
@@ -44,9 +44,9 @@ const ProList = ({ problem, user, getProblems}) => {
           ))}
         </ul>
       )}
-
-      <ProForm addPro={addPro} />
     </div>
+      <ProForm addPro={addPro} />
+    </section>
   );
 };
 
