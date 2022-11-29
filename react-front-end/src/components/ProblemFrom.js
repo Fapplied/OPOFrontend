@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Button from "@mui/material/Button";
+import "../styles/ProblemForm.css"
 
 const ProblemFrom = ({addProblem}) => {
   const [problem, setProblem] = useState({
@@ -28,7 +29,7 @@ const ProblemFrom = ({addProblem}) => {
         <input
           type="text"
           name="task"
-          placeholder='Problem'
+          placeholder="What's bothering you?" 
           value={problem.Title}
           onChange={handleTaskInputChange}
         />

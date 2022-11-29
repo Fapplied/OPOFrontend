@@ -4,6 +4,7 @@ import axios from "axios";
 import { getLS, setLS } from "../helpers/storage";
 import { Avatar, IconButton } from "@mui/material";
 import { border, textAlign } from "@mui/system";
+import "../styles/Profile.css"
 
 const Profile = ({ user }) => {
   const [picURL, setPicURL] = useState();
@@ -60,13 +61,14 @@ const Profile = ({ user }) => {
   }, []);
 
   return (
-    <div>
+    <div className="ProfileInfo">
       <Avatar
         style={{
           width: "100px",
           height: "100px",
           border: "solid grey",
           textAlign: "center",
+          alignSelf:"center",
         }}
         src={picURL ?? ""}
         alt="Profile Picture"

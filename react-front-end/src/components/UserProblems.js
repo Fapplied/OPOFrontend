@@ -3,7 +3,8 @@ import Problem from "./Problem";
 import axios, { Axios } from "axios";
 import logo from "../OPOlogo.jpg";
 import ProblemFrom from "./ProblemFrom";
-import ClipLoader from "react-spinners/ClipLoader";
+import PuffLoader from "react-spinners/PuffLoader";
+import "../styles/Loading.css"
 
 
 const UserProblems = ({ user }) => {
@@ -50,7 +51,7 @@ const UserProblems = ({ user }) => {
     <div>
       <ProblemFrom addProblem={addProblem} />
       {/* <img src={logo} alt="logo" width="500px" /> */}
-      {loading ?  <ClipLoader/> : (
+      {loading ?  <div className="loading"> <PuffLoader className="PuffLoader" size={200} color="#E88721"/> </div>: (
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
           <li key={problem.problemId}>

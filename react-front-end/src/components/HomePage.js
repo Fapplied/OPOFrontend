@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Problem from "./Problem";
 import axios, { Axios } from "axios";
 import logo from "../OPOlogo.jpg";
-import ClipLoader from "react-spinners/ClipLoader";
+import PuffLoader from "react-spinners/PuffLoader";
+import "../styles/Loading.css";
 
 
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
@@ -27,8 +28,8 @@ const HomePage = ({ user }) => {
   //fetch and Map problems
   return (
     
-    <div>
-      {loading ?  <ClipLoader />   : (
+    <div >
+      {loading ? <div className="loading"> <PuffLoader className="PuffLoader" size={200} color="#E88721" /> </div> : (
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
           <li key={problem.problemId}>
