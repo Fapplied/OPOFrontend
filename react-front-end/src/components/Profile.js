@@ -1,39 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Problem from "./Problem";
-import axios from "axios";
-import logo from "../OPOlogo.jpg";
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
-const ProfileEndpoint = "https://opobackend.azurewebsites.net/api/Problems";
+const Profile = ({user}) => {
 
-// name picture
-
-const HomePage = () => {
-  const [problems, setProblems] = useState([]);
-
-  const getProblems = async () => {
-    const { data, status } = await axios.get(ProfileEndpoint);
-    if (status === 200) {
-      setProblems(data);
-    }
-  };
-
-  useEffect(() => {
-    getProblems();
-  }, []);
-
-  //fetch and Map problems
   return (
     <div>
-      <img src={logo} alt="logo" width="500px" />
-      <ul className="Problem-List" style={{}}>
-        {problems.map((problem) => (
-          <li key={problem.id}>
-            <Problem getProblems={getProblems} problem={problem} />
-          </li>
-        ))}
-      </ul>
+     <img src="" alt="Profile Picture"/>
+      <AddAPhotoIcon/>
+      <h3>{user.name}</h3>
     </div>
-  );
+);
 };
 
-export default HomePage;
+export default Profile;

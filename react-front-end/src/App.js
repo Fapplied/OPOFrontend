@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProblemList from "./components/ProblemList";
 import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import { Button } from "@mui/material/Button";
@@ -10,6 +9,7 @@ import { setLS, getLS, removeLS } from "./helpers/storage";
 import endpoints from "./helpers/endpoints";
 import NavBar from "./components/NavBar";
 import UserProblems from "./components/UserProblems";
+import Profile from "./components/Profile";
 
 function App() {
   const [user, setUser] = useState(getLS("User2"));
@@ -26,7 +26,7 @@ function App() {
             <Route
               path="/profile"
               element={
-                <>{user ? <UserProblems user={user} /> : "Please sign in"}</>
+                <>{user ? <><Profile user={user}/> <UserProblems user={user} /> </>: "Please sign in"}</>
               }
             ></Route>
           </Routes>
