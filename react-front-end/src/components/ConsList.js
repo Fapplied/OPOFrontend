@@ -17,9 +17,10 @@ const ConsList = ({ problem, user, getProblems }) => {
   const addCon = async (con) => {
     // const { disadvantage } = con;
     // adds new con to beginning of cons array
+    const {Disadvantage} = con;
     const { status } = await axios.post(
       Cons_ENDPOINT + `?problemId=${problemId}`,
-      con
+      {Disadvantage: Disadvantage, UserId: userId}
     );
     if (status === 201) {
       await getOneProblem()

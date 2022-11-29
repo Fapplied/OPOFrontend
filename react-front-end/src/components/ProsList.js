@@ -17,9 +17,10 @@ const ProList = ({ problem, user}) => {
 
   const addPro = async (pro) => {
     // adds new pro to beginning of cons array
+    const { Advantage }  = pro;
     const { status } = await axios.post(
       Pro_ENDPOINT + `?problemId=${problemId}`,
-      pro
+      {Advantage: Advantage, UserId: userId}
     );
     if (status === 201) {
       await getOneProblem();
