@@ -21,23 +21,18 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <NavBar setUser={setUser} user={user} />
-
           <Routes>
             <Route path="/" element={<>{<HomePage user={user} />}</>}></Route>
             <Route
-              path="/user"
+              path="/profile"
               element={
                 <>{user ? <UserProblems user={user} /> : "Please sign in"}</>
               }
             ></Route>
-            {/* <Route path="/user" element={</>}></Route> */}
-            {/*<Route path="/search" element={<SearchResult params={params} setParams={setParams} />}></Route>*/}
-            {/*<Route path="/about" element={<About/>}></Route>*/}
           </Routes>
           {/*<Footer/>*/}
         </div>
       </BrowserRouter>
-      {/*<Footer />*/}
     </>
   );
 }

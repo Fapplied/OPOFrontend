@@ -57,7 +57,7 @@ const NavBar = ({ setUser, user }) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/search">Search</Link>
+            <Link to="/profile">Profile</Link>
           </li>
           <li>
             {user === false && <div id="signInDiv"></div>}

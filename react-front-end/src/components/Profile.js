@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Problem from "./ProblemHomePage";
+import Problem from "./Problem";
 import axios from "axios";
 import logo from "../OPOlogo.jpg";
 

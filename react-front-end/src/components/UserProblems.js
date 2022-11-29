@@ -14,10 +14,11 @@ const UserProblems = ({ user }) => {
   console.log("GET PROBLEMS URL", PROBLEMS_ENDPOINT + `/${user.userId}`);
 
   const [problems, setProblems] = useState([]);
-
+  
   const getProblems = async () => {
+    const currentUserId = user.userId ?? user.data.userId;
     const { data, status } = await axios
-      .get(PROBLEMS_ENDPOINT + `/${user.userId}`)
+      .get(PROBLEMS_ENDPOINT + `/${currentUserId}`)
       .then((r) => r)
       .catch((e) => console.log({ AxiosError: e }));
     if (status === 200) {
