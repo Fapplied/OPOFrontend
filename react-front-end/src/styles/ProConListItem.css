@@ -1,0 +1,12 @@
+.ProConList-Item {
+  display: flex;
+  align-items: center;
+  border: solid thin;
+  margin: 1em 0;
+}
+
+.opinions {
+  width: 17em;
+  align-self: center;
+  text-align: start;
+}

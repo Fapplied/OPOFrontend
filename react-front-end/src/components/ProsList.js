@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Pro from "./Pro";
 import axios from "axios";
 import ProForm from "./ProForm";
+import "../styles/ProConList.css"
+
 
 const Pro_ENDPOINT = "https://opobackend.azurewebsites.net/api/Pros";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
@@ -34,11 +36,11 @@ const ProList = ({ problem, user}) => {
   }
 
   return (
-    <section className="ProSection">
-    <div className="ProsWrapper">
+    <section className="ProConSection ProSection">
+    <div className="ProConWrapper">
       <h3>Pros</h3>
       {proList && (
-        <ul className="Pros-List">
+        <ul className="ProsConsList">
           {pros.map((pro) => (
             <li key={pro.proId}>
               <Pro getProblems={getOneProblem} pro={pro} />

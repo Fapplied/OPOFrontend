@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Avatar, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Route, useLocation, Link } from "react-router-dom";
-import { ArrowUpwardOutlined } from "@mui/icons-material";
 import axios from "axios";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import { getLS } from "../helpers/storage";
+import "../styles/ProConListItem.css"
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/pro";
 const PRO_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Pros';
@@ -52,7 +50,7 @@ const Pro = ({ pro, getProblems }) => {
   }, []);
 
   return (
-    <div className="ProConList-Item" style={{ display: "flex" }}>
+    <div className="ProConList-Item">
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
         src={`https://avatars.dicebear.com/api/open-peeps/${proId}.svg`}
@@ -63,6 +61,7 @@ const Pro = ({ pro, getProblems }) => {
         </div>
       ) : (
         <div>
+          <p style={{ color: "black" }}>{likes}</p>
           <IconButton onClick={handleUpVoteClick}>
             {isLiked ? (
               <KeyboardDoubleArrowUpOutlinedIcon />
@@ -70,7 +69,6 @@ const Pro = ({ pro, getProblems }) => {
               <KeyboardArrowUpOutlinedIcon />
             )}
           </IconButton>
-          <p style={{ color: "black" }}>{likes}</p>
         </div>
       )}
       <p className="opinions">{title}</p>

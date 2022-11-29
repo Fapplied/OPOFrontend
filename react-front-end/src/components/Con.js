@@ -6,7 +6,7 @@ import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubl
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import { useLocation } from "react-router-dom";
 import { getLS } from "../helpers/storage";
-
+import "../styles/ProConListItem.css"
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
 const Cons_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Cons';
@@ -49,7 +49,7 @@ const Con = ({ con, getProblems }) => {
   }, []);
 
   return (
-    <div className="ProConList-Item" style={{ display: "flex" }}>
+    <div className="ProConList-Item">
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
         src={`https://avatars.dicebear.com/api/open-peeps/${conId}.svg`}
@@ -60,6 +60,7 @@ const Con = ({ con, getProblems }) => {
           </div>
       ) : (
         <div>
+          <p style={{ color: "black" }}>{likes}</p>
           <IconButton onClick={handleUpVoteClick}>
             {isLiked ? (
               <KeyboardDoubleArrowUpOutlinedIcon />
@@ -67,7 +68,6 @@ const Con = ({ con, getProblems }) => {
               <KeyboardArrowUpOutlinedIcon />
             )}
           </IconButton>
-          <p style={{ color: "black" }}>{likes}</p>
         </div>
       )}
       <p className="opinions">{title}</p>

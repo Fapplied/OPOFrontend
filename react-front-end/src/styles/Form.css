@@ -1,0 +1,21 @@
+.ProConForm {
+  /*width: fit-content;*/
+  /*text-align: initial;*/
+  display: flex;
+  align-items: center;
+}
+
+.TextInput {
+  width: 25em;
+  /*border-radius: 0.5em;*/
+  padding: 0.5em;
+  border: transparent;
+}
+
+.ProSection > div:nth-child(2) > form > button {
+  color: #b2f1b2;
+}
+
+.ConSection > div:nth-child(2) > form > button {
+  color: #f38a8a;
+}

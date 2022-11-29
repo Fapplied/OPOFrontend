@@ -4,6 +4,7 @@ import ConsList from "./ConsList";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Avatar, IconButton } from "@mui/material";
 import axios from "axios";
+import "../styles/Problem.css";
 
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
@@ -18,7 +19,7 @@ const Problem = ({ user, problem, getProblems }) => {
   };
 
   return (
-    <div>
+    <div className="problem">
       <div className="problem-header" style={{ display: "flex" }}>
         <Avatar
           style={{ border: "solid grey", margin: "1vw", marginTop: "1vw" }}
@@ -34,8 +35,8 @@ const Problem = ({ user, problem, getProblems }) => {
         )}
       </div>
       <div className="problem-lists">
-        <ProsList className="list-c" user={user} problem={problem} />
-        <ConsList className="list-c" user={user} problem={problem} />
+        <ProsList className="list" user={user} problem={problem} />
+        <ConsList className="list" user={user} problem={problem} />
       </div>
     </div>
   );
