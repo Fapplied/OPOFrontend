@@ -88,7 +88,7 @@ const Profile = ({ user }) => {
         <AddAPhotoIcon />
       </IconButton>
 
-      <h3>{user.name}</h3>
+      <h3>{user.name ?? user.config.data.name}</h3>
     </div>
   );
 };
