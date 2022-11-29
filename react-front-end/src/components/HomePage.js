@@ -4,13 +4,16 @@ import axios, { Axios } from "axios";
 import logo from "../OPOlogo.jpg";
 import PuffLoader from "react-spinners/PuffLoader";
 import "../styles/Loading.css";
+import ProblemFrom from "./ProblemFrom";
 
 
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
+const PROBLEMS_ENDPOINT2 = `https://opobackend.azurewebsites.net/api/Problems`;
 
 const HomePage = ({ user }) => {
   const [problems, setProblems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { userId } = user;
 
   const getProblems = async () => {
     const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
@@ -18,6 +21,17 @@ const HomePage = ({ user }) => {
       setLoading(false)
       setProblems(data);
      
+    }
+  };
+  
+  const addProblem = async (problem) => {
+    // adds new con to beginning of problems array
+    const { status } = await axios.post(
+      PROBLEMS_ENDPOINT2 + `?userId=${userId}`,
+      problem
+    );
+    if (status === 201) {
+      await getProblems();
     }
   };
 
@@ -29,9 +43,10 @@ const HomePage = ({ user }) => {
   return (
     
     <div >
+      {user && <ProblemFrom addProblem={addProblem} />}
       {loading ? <div className="loading"> <PuffLoader className="PuffLoader" size={200} color="#E88721" /> </div> : (
       <ul className="Problem-List" style={{}}>
-        {problems.map((problem) => (
+        {[...problems].reverse().map((problem) => (
           <li key={problem.problemId}>
             <Problem
               user={user}
