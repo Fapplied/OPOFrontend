@@ -125,6 +125,16 @@ img {
 .navBar {
   background-color: white;
 }
+
+.hidden {
+  display: none;
+}
+
+.profilepictures {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
 /* #signInDiv > div > div:last-child > iframe {
   background-color: transparent;
   width: 0;
