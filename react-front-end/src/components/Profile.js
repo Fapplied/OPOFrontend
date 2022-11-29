@@ -73,6 +73,7 @@ const Profile = ({ user }) => {
       />
       <input
         onChange={handleImage}
+        accept="image/jpeg, image/png"
         className="hidden"
         type="file"
         id="my_file"
