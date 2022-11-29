@@ -12,8 +12,6 @@ const ProblemList = ({user}) => {
   const {userId } = user.data;
   
   const getProblems = async () => {
-    //     const testID = localStorage.getItem("User") !== null ? localStorage.getItem("User") : "";
-    // console.log({ PROBLEMS_ENDPOINT, testID: testID.userid });
     const { data, status } = await axios.get(PROBLEMS_ENDPOINT);
     if (status === 200) {
       setProblems(data);
@@ -25,11 +23,7 @@ const ProblemList = ({user}) => {
     const { status } = await axios.post(PROBLEMS_ENDPOINT + `?userId=${userId}`, problem)
     if (status === 201) {
       console.log('before the getProblem')
-      // const {  data } = await axios.get(PROBLEMS_ENDPOINT);
-      // setProblems([problem, ...problems]);
-      // setProblems(data.p);
-      getProblems()
-
+      await getProblems()
     }
   };
 

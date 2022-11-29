@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProblemHomePage from "./Problem";
+import Problem from "./Problem";
 import axios, { Axios } from "axios";
 import logo from "../OPOlogo.jpg";
 import ProblemFrom from "./ProblemFrom";
@@ -48,8 +48,8 @@ const UserProblems = ({ user }) => {
       {/* <img src={logo} alt="logo" width="500px" /> */}
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
-          <li key={problem.id}>
-            <ProblemHomePage
+          <li key={problem.problemId}>
+            <Problem
               user={user}
               getProblems={getProblems}
               problem={problem}

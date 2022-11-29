@@ -25,7 +25,7 @@ const HomePage = ({ user }) => {
       {/* <img src={logo} alt="logo" width="500px" /> */}
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
-          <li key={problem.id}>
+          <li key={problem.problemId}>
             <Problem
               user={user}
               getProblems={getProblems}

@@ -40,14 +40,14 @@ const ConsList = ({ problem, user, getProblems }) => {
       {conList && (
         <ul className="Cons-List">
           {cons.map((con) => (
-            <li>
+            <li key={con.conId}>
               <Con getProblems={getOneProblem} con={con} />
             </li>
           ))}
         </ul>
       )}
     </div>
-      <ConForm addCon={addCon} />
+      { user &&  <ConForm addCon={addCon} />}
     </section>
   );
 };

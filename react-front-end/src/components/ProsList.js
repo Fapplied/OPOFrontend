@@ -6,9 +6,10 @@ import ProForm from "./ProForm";
 const Pro_ENDPOINT = "https://opobackend.azurewebsites.net/api/Pros";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
-const ProList = ({ problem, user, getProblems}) => {
+const ProList = ({ problem, user}) => {
   const { proList, problemId } = problem;
   const { userId } = user;
+  
 
   const [pros, setPros] = useState(() => {
     return proList ?? [];
@@ -38,14 +39,14 @@ const ProList = ({ problem, user, getProblems}) => {
       {proList && (
         <ul className="Pros-List">
           {pros.map((pro) => (
-            <li>
+            <li key={pro.proId}>
               <Pro getProblems={getOneProblem} pro={pro} />
             </li>
           ))}
         </ul>
       )}
     </div>
-      <ProForm addPro={addPro} />
+      {user &&  <ProForm addPro={addPro} /> }
     </section>
   );
 };
