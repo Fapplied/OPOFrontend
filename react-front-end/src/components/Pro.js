@@ -11,8 +11,9 @@ import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubl
 import { getLS } from "../helpers/storage";
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/pro";
+const PRO_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Pros';
 
-const Pro = ({ pro }) => {
+const Pro = ({ pro, getProblems }) => {
   const { title, proId } = pro;
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -30,6 +31,15 @@ const Pro = ({ pro }) => {
       getLikes();
     }
   };
+
+  const handleDelete = async () => {
+    const { status } = await axios.delete(PRO_ENDPOINT + `/${proId}`);
+    if (status === 204) {
+
+      await getProblems();
+    }
+  }
+
   const getLikes = async () => {
     const { data, status } = await axios.get(Likes_ENDPOINT + `/${proId}`);
     if (status === 200 && Number.isInteger(data.length)) {
@@ -65,7 +75,7 @@ const Pro = ({ pro }) => {
       )}
       <p className="opinions">{title}</p>
       {location.pathname === "/user" ? (
-        <IconButton>
+        <IconButton onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>
       ) : (
@@ -76,3 +86,4 @@ const Pro = ({ pro }) => {
 };
 
 export default Pro;
+

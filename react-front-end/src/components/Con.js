@@ -5,12 +5,16 @@ import axios from "axios";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 
-const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
 
-const Con = ({ con }) => {
+const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
+const Cons_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Cons';
+
+
+const Con = ({ con, getProblems }) => {
   const { title, conId, problemId } = con;
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+
 
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
@@ -23,6 +27,12 @@ const Con = ({ con }) => {
     }
   };
 
+  const handleDelete = async () => {
+    const { status } = await axios.delete(Cons_ENDPOINT + `/${conId}`);
+    if (status === 204) {
+      await getProblems();
+    }
+  }
   const getLikes = async () => {
     const { data, status } = await axios.get(Likes_ENDPOINT + `/${conId}`);
     if (status === 200 && Number.isInteger(data.length)) {
@@ -56,7 +66,7 @@ const Con = ({ con }) => {
       )}
       <p className="opinions">{title}</p>
       {location.pathname === "/user" ? (
-        <IconButton>
+        <IconButton onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>
       ) : (

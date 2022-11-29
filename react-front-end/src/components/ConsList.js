@@ -6,7 +6,7 @@ import ConForm from "./ConForm";
 const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
-const ConsList = ({ problem, user }) => {
+const ConsList = ({ problem, user, getProblems }) => {
   const { conList, problemId } = problem;
   const { userId } = user;
 
@@ -22,32 +22,35 @@ const ConsList = ({ problem, user }) => {
       con
     );
     if (status === 201) {
-      const { data } = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`);
-      const { conList: theList } = data;
-      setCons([...theList]);
+      await getOneProblem()
     }
   };
 
+  const getOneProblem = async () => {
+    const { data } = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`);
+    const { conList: theList } = data;
+    setCons([...theList]);
+  }
+
+
   //Call back end and ask for list of cons. Add its own controller.
   return (
-    <>
-      <section className="ConSection">
-        <div className="ConsWrapper">
-          <h3>Cons</h3>
-          {conList && (
-            <ul className="Cons-List">
-              {cons.map((con) => (
-                <li>
-                  <Con con={con} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <ConForm addCon={addCon} />
-      </section>
-    </>
+    <div>
+      <h3>Cons</h3>
+      {conList && (
+        <ul className="Cons-List">
+          {cons.map((con) => (
+            <li>
+              <Con getProblems={getOneProblem} con={con} />
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <ConForm addCon={addCon} />
+    </div>
   );
 };
 
 export default ConsList;
+

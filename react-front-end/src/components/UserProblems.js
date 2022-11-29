@@ -6,7 +6,6 @@ import ProblemFrom from "./ProblemFrom";
 
 const UserProblems = ({ user }) => {
   const { userId } = user;
-  //   console.log({ user2: user });
   const PROBLEMS_ENDPOINT =
     "https://opobackend.azurewebsites.net/api/Problems/user";
 
@@ -33,10 +32,6 @@ const UserProblems = ({ user }) => {
       problem
     );
     if (status === 201) {
-      console.log("before the getProblem");
-      // const {  data } = await axios.get(PROBLEMS_ENDPOINT);
-      // setProblems([problem, ...problems]);
-      // setProblems(data.p);
       await getProblems();
     }
   };

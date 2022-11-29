@@ -6,7 +6,7 @@ import ProForm from "./ProForm";
 const Pro_ENDPOINT = "https://opobackend.azurewebsites.net/api/Pros";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
-const ProList = ({ problem, user }) => {
+const ProList = ({ problem, user, getProblems}) => {
   const { proList, problemId } = problem;
   const { userId } = user;
 
@@ -21,31 +21,32 @@ const ProList = ({ problem, user }) => {
       pro
     );
     if (status === 201) {
-      const { data } = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`);
-      const { proList: theList } = data;
-      setPros([...theList]);
+      await getOneProblem();
     }
   };
 
+  const getOneProblem = async () => {
+    const { data } = await axios.get(PROBLEMS_ENDPOINT + `/${problemId}`);
+    const { proList: theList } = data;
+    setPros([...theList]);
+  }
+
   //Call back end and ask for list of Pros. Add its own controller.
   return (
-    <>
-      <section className="ProSection">
-        <div className="ProsWrapper">
-          <h3>Pros</h3>
-          {proList && (
-            <ul className="Pros-List">
-              {pros.map((pro) => (
-                <li>
-                  <Pro pro={pro} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <ProForm addPro={addPro} />
-      </section>
-    </>
+    <div>
+      <h3>Pros</h3>
+      {proList && (
+        <ul className="Pros-List">
+          {pros.map((pro) => (
+            <li>
+              <Pro getProblems={getOneProblem} pro={pro} />
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <ProForm addPro={addPro} />
+    </div>
   );
 };
 
