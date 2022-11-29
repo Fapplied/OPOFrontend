@@ -65,7 +65,7 @@ const Con = ({ con, getProblems }) => {
         </div>
       )}
       <p className="opinions">{title}</p>
-      {location.pathname === "/user" ? (
+      {location.pathname === "/profile" ? (
         <IconButton onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>

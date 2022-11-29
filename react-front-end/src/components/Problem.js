@@ -25,7 +25,7 @@ const Problem = ({ user, problem, getProblems }) => {
           src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
         />
         <h4>{problem.title}</h4>
-        {location.pathname === "/user" && user ? (
+        {location.pathname === "/profile" && user ? (
           <IconButton onClick={clickDelete}>
             <DeleteIcon />
           </IconButton>
