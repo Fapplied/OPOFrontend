@@ -3,11 +3,14 @@ import Problem from "./Problem";
 import axios, { Axios } from "axios";
 import logo from "../OPOlogo.jpg";
 import ProblemFrom from "./ProblemFrom";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 const UserProblems = ({ user }) => {
   const { userId } = user;
   const PROBLEMS_ENDPOINT =
     "https://opobackend.azurewebsites.net/api/Problems/user";
+  const [loading, setLoading] = useState(true);
 
   const PROBLEMS_ENDPOINT2 = `https://opobackend.azurewebsites.net/api/Problems`;
 
@@ -22,6 +25,7 @@ const UserProblems = ({ user }) => {
       .then((r) => r)
       .catch((e) => console.log({ AxiosError: e }));
     if (status === 200) {
+      setLoading(false);
       setProblems(data);
     }
   };
@@ -46,6 +50,7 @@ const UserProblems = ({ user }) => {
     <div>
       <ProblemFrom addProblem={addProblem} />
       {/* <img src={logo} alt="logo" width="500px" /> */}
+      {loading ?  <ClipLoader/> : (
       <ul className="Problem-List" style={{}}>
         {problems.map((problem) => (
           <li key={problem.problemId}>
@@ -56,7 +61,7 @@ const UserProblems = ({ user }) => {
             />
           </li>
         ))}
-      </ul>
+      </ul>)}
     </div>
   );
 };
