@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProsList from "./ProsList";
 import ConsList from "./ConsList";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -10,6 +10,19 @@ const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
 const Problem = ({ user, problem, getProblems }) => {
   const { problemId, userId } = problem;
+
+  const [allLikes, setAllLikes] = useState(false);
+
+  const allLikesURL = `https://opobackend.azurewebsites.net/api/Likes/all/${problemId}`;
+
+  useEffect(() => {
+    const getAllLikes = async (url) => {
+      const likes = await axios.get(allLikesURL).then((r) => r.data);
+      setAllLikes(likes);
+    };
+
+    getAllLikes(allLikesURL);
+  }, []);
 
   const clickDelete = async () => {
     const { status } = await axios.delete(PROBLEMS_ENDPOINT + `/${problemId}`);
@@ -26,6 +39,8 @@ const Problem = ({ user, problem, getProblems }) => {
           src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
         />
         <h4>{problem.title}</h4>
+        <h6>All ProLikes = {allLikes.ProLikes}</h6>
+        <h6>All ConLikes = {allLikes.ConLikes}</h6>
         {location.pathname === "/profile" && user ? (
           <IconButton onClick={clickDelete}>
             <DeleteIcon />
