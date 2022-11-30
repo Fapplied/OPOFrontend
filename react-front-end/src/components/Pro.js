@@ -16,7 +16,6 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes }) => {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const user = getLS("User2");
-
   const location = useLocation();
 
   const handleUpVoteClick = async () => {
@@ -45,6 +44,12 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes }) => {
     const { data, status } = await axios.get(Likes_ENDPOINT + `/${proId}`);
     if (status === 200 && Number.isInteger(data.length)) {
       setLikes(data.length);
+      for (let i = 0; i < data.length; i++) {
+        if (user.userId === data[i].userId) {
+          setIsLiked(true)
+        }
+      }
+      
     }
   };
 

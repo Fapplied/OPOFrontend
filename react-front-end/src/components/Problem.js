@@ -18,8 +18,6 @@ const Problem = ({ user, problem, getProblems }) => {
   useEffect(() => {
     const getAllLikes = async (url) => {
       const likes = await axios.get(allLikesURL).then((r) => r.data);
-
-      console.log({ likes, problemId });
       setAllLikes(likes);
     };
 
