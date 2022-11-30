@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import Button from "@mui/material/Button"
+import { IconButton } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import "../styles/Form.css"
 
 const ConForm = ({ addCon }) => {
   const [con, setCon] = useState({
@@ -21,16 +24,19 @@ const ConForm = ({ addCon }) => {
     }
   }
   return (
-    <div className="prosconForm">
-      <form className="Con-form problemlist-form" onSubmit={handleSubmit}>
+    <div >
+      <form className="ProConForm" onSubmit={handleSubmit}>
         <input
+          className="TextInput"
           type="text"
           name="task"
-          placeholder="Con"
+          placeholder="Add a con.."
           value={con.Disadvantage}
           onChange={handleTaskInputChange}
         />
-        <Button type="submit">✚</Button>
+      <IconButton type="submit">
+        <AddIcon />
+    </IconButton>
       </form>
     </div>
   );

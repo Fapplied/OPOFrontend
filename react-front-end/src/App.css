@@ -1,51 +1,14 @@
 .App {
   text-align: center;
-  background-color: white;
+  background-color: #f3f2f2;
 }
 
 ul {
   list-style-type: none;
 }
 
-ul > li > button {
-  /* sign out button  */
-  width: 138px;
-  background-color: white;
-  border: 1px solid rgb(201, 201, 201);
+.Problem-List {
   padding: 0;
-  border-radius: 5px;
-}
-
-.ProConList-Item {
-  width: 112%;
-  justify-content: space-evenly;
-}
-
-.problem-lists {
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-}
-
-#Problem-List {
-  padding: 0;
-}
-
-.problem-header {
-  justify-content: center;
-  border-radius: 0.5em;
-  background-color: #c8f1e3;
-}
-
-.opinions {
-  width: 300px;
-  border: solid;
-  border-radius: 7px;
-  align-self: center;
-}
-
-img {
-  filter: hue-rotate(100deg) saturate(40%);
 }
 
 #signInDiv {
@@ -54,76 +17,6 @@ img {
   margin: 0;
   padding: 0;
   overflow: hidden;
-}
-.todo-form {
-  /* background-color: red; */
-}
-
-.problemlist-form {
-  margin-left: 190px;
-}
-
-.Problem-List /* this is basically .prosconButton but the css is overwritten by mui { */
-  > li
-  > div
-  > div
-  > section
-  > div
-  > form
-  > button {
-  font-size: 40px;
-  margin: 0;
-  padding: 0;
-}
-
-.prosconForm {
-  /* align-self: flex-end; */
-  /* bottom: 0; */
-  width: fit-content;
-  text-align: initial;
-}
-
-.ProSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-/* /html/body/div/div/div/ul/li[1]/div/div[2]/section[1]/div[2]/form/button */
-
-.ProSection > div:nth-child(2) > form > button {
-  color: green;
-  margin-bottom: -4px;
-}
-
-.ConSection > div:nth-child(2) > form > button {
-  color: red;
-  margin-bottom: -4px;
-}
-
-.ConSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.Logo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px;
-  display: none;
-}
-
-.nav__ul {
-  display: flex;
-  justify-content: space-evenly;
-  /* height: 100px; */
-}
-
-.navBar {
-  background-color: white;
 }
 
 .hidden {

@@ -52,7 +52,7 @@ const UserProblems = ({ user }) => {
       <ProblemFrom addProblem={addProblem} />
       {/* <img src={logo} alt="logo" width="500px" /> */}
       {loading ?  <div className="loading"> <PuffLoader className="PuffLoader" size={200} color="#E88721"/> </div>: (
-      <ul className="Problem-List" style={{}}>
+      <ul className="Problem-List">
         {[...problems].reverse().map((problem) => (
           <li key={problem.problemId}>
             <Problem

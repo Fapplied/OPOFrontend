@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Button from "@mui/material/Button";
-import "../styles/ProblemForm.css"
+import "../styles/Form.css"
 
 const ProblemFrom = ({addProblem}) => {
   const [problem, setProblem] = useState({
@@ -24,9 +24,10 @@ const ProblemFrom = ({addProblem}) => {
   }
 
   return (
-    <div>
-      <form className="Pro-form" onSubmit={handleSubmit}>
+    <div >
+      <form className="Problem-form" onSubmit={handleSubmit}>
         <input
+          className="TextInput"
           type="text"
           name="task"
           placeholder="What's bothering you?" 

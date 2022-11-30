@@ -1,12 +1,14 @@
 import logo from "../OPOlogo.jpg";
-import "../App.css";
+import "../styles/NavBar.css";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { removeLS, getLS, setLS } from "../helpers/storage";
 import jwtDecode from "jwt-decode";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import endpoints from "../helpers/endpoints";
 
 const NavBar = ({ setUser, user }) => {
+  const [menuVisible, setMenuVisible] = useState(false)
+  
   const handleCallbackResponseGoogle = async (response) => {
     var localTokenData = jwtDecode(response.credential);
     var backendResponse = await endpoints.registerUser(
@@ -42,9 +44,18 @@ const NavBar = ({ setUser, user }) => {
     });
   }, [user]);
 
+
+  function openNav() {
+    if (menuVisible === false) {
+      setMenuVisible(true)
+    } else {
+      setMenuVisible(false)
+    }
+  }
+
   return (
-    <>
-      <nav className="navBar">
+    <div >
+      <button className="menuButton" onClick={openNav}>
         <img
           className="Logo"
           src={logo}
@@ -52,6 +63,8 @@ const NavBar = ({ setUser, user }) => {
           height="100px"
           alt="logo"
         />
+      </button>
+      <nav className="navBar" style={{display: menuVisible === true ? "none":"block"}}>
         <ul className="nav__ul">
           <li>
             <Link to="/">Home</Link>
@@ -68,8 +81,9 @@ const NavBar = ({ setUser, user }) => {
         </ul>
         <hr></hr>
       </nav>
-    </>
+    </div>
   );
 };
+  
 
 export default NavBar;

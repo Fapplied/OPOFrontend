@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
+import AddIcon from '@mui/icons-material/Add';
+import "../styles/Form.css"
+import { IconButton } from "@mui/material";
 
 const ProForm = ({ addPro }) => {
   const [pro, setPro] = useState({
@@ -22,18 +25,19 @@ const ProForm = ({ addPro }) => {
   }
 
   return (
-    <div className="prosconForm">
-      <form className="Pro-form problemlist-form" onSubmit={handleSubmit}>
+    <div >
+      <form className="ProConForm" onSubmit={handleSubmit}>
         <input
+          className="TextInput"
           type="text"
           name="task"
-          placeholder="Pro"
+          placeholder="Add a pro..."
           value={pro.Advantage}
           onChange={handleTaskInputChange}
         />
-        <Button className="prosconButton" type="submit">
-          ✚
-        </Button>
+      <IconButton className="prosconButton" type="submit">
+        <AddIcon />
+    </IconButton>
       </form>
     </div>
   );

@@ -1,0 +1,29 @@
+.ProConSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+p {
+  margin: 0.5em;
+}
+
+.ProsConsList {
+  padding: 0;
+  margin: 1em;
+  height: 12em;
+  overflow: scroll;
+}
+
+.ListHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em;
+}
+
+.ProConHeader {
+  font-size: 1.2em;
+}
