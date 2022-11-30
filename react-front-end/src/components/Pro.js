@@ -17,8 +17,10 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes }) => {
   const [isLiked, setIsLiked] = useState(false);
   const user = getLS("User2");
   const location = useLocation();
+  const [proOwnerId, setProOwnerId] = useState(null)
   const [picURL, setPicURL] = useState();
-
+  
+  
 
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
@@ -55,16 +57,24 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes }) => {
       
     }
   };
+  
+  const getProId = async () => {
+    const { data, status } = await axios.get( PRO_ENDPOINT + `/${proId}`);
+    setProOwnerId(data.userId)
+    axios.get(`https://opobackend.azurewebsites.net/api/users/${data.userId}`).then(res => setPicURL(res.data.profilePicture.url))
+    
+  }
 
   useEffect(() => {
     getLikes();
+    getProId();
   }, []);
 
   return (
     <div className="ProConList-Item">
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
-        src={`https://avatars.dicebear.com/api/open-peeps/${proId}.svg`}
+        src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
       />
       {location.pathname === "/" && !user ? (
         <div>
