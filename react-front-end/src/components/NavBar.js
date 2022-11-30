@@ -55,7 +55,7 @@ const NavBar = ({ setUser, user }) => {
 
   return (
     <div >
-      <nav className="navBar" style={{display: menuVisible === true ? "hidden":"block"}}>
+      <nav className="navBar" style={{display: menuVisible === true ? "none":"block"}}>
         <button className="menuButton" onClick={openNav}>
           <img
             className="Logo"
