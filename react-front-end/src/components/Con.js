@@ -13,7 +13,7 @@ const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
 const Cons2_ENDPOINT = "https://localhost:7057/api/Cons";
 const Likes2_ENDPOINT = "https://localhost:7057/api/Likes/con";
 
-const Con = ({ con, getProblems, allLikes, setAllLikes }) => {
+const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const { title, conId, problemId } = con;
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -71,10 +71,13 @@ const Con = ({ con, getProblems, allLikes, setAllLikes }) => {
 
   return (
     <div className="ProConList-Item">
+      <div>
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
         src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
       />
+      {proOwnerId == problemOwnerId ? <p>Owner</p> : <br />}
+</div>
       {location.pathname === "/" && !user ? (
         <div>
           <p style={{ color: "black" }}>{likes}</p>

@@ -7,7 +7,7 @@ import "../styles/ProConList.css";
 const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
-const ConsList = ({ problem, user, allLikes, setAllLikes }) => {
+const ConsList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
   const { conList, problemId } = problem;
   const { userId } = user;
 
@@ -52,6 +52,7 @@ const ConsList = ({ problem, user, allLikes, setAllLikes }) => {
                   con={con}
                   allLikes={allLikes}
                   setAllLikes={setAllLikes}
+                  problemOwnerId={problemOwnerId}
                 />
               </li>
             ))}

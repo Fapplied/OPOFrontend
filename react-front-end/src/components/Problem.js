@@ -71,6 +71,7 @@ const Problem = ({ user, problem, getProblems }) => {
           problem={problem}
           allLikes={allLikes}
           setAllLikes={setAllLikes}
+          problemOwnerId={userId}
         />
         <ConsList
           className="list"
@@ -78,6 +79,7 @@ const Problem = ({ user, problem, getProblems }) => {
           problem={problem}
           allLikes={allLikes}
           setAllLikes={setAllLikes}
+          problemOwnerId={userId}
         />
       </div>
     </div>
