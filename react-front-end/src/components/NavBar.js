@@ -55,16 +55,16 @@ const NavBar = ({ setUser, user }) => {
 
   return (
     <div >
+      <button className="menuButton" onClick={openNav}>
+        <img
+          className="Logo"
+          src={logo}
+          width="100px"
+          height="100px"
+          alt="logo"
+        />
+      </button>
       <nav className="navBar" style={{display: menuVisible === true ? "none":"block"}}>
-        <button className="menuButton" onClick={openNav}>
-          <img
-            className="Logo"
-            src={logo}
-            width="100px"
-            height="100px"
-            alt="logo"
-          />
-        </button>
         <ul className="nav__ul">
           <li>
             <Link to="/">Home</Link>
