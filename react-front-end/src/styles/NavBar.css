@@ -3,9 +3,11 @@
 /*  filter: hue-rotate(100deg) saturate(40%);*/
 /*}*/
 
-.menuButton {;
+.menuButton {
   display: flex;
   position: fixed;
+  margin: 1em;
+  z-index: 3;
 }
 
 .navBar {
@@ -15,8 +17,8 @@
   background-color: #ccc8c8;
   position: fixed;
   height: 100vh;
-  padding: 0;
-  z-index: 1;
+  padding-top: 4em;
+  z-index: 2;
 }
 
 .navBar--ul {

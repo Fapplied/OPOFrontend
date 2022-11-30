@@ -45,25 +45,21 @@ const NavBar = ({ setUser, user }) => {
   }, [user]);
 
 
-  // function openNav() {
-  //   if (menuVisible === false) {
-  //     setMenuVisible(true)
-  //   } else {
-  //     setMenuVisible(false)
-  //   }
-  // }
-
-  function openNav() {
+  function toggleNav() {
+    if (menuVisible === false) {
       setMenuVisible(true)
-  }
-
-  function closeNav() {
+    } else {
       setMenuVisible(false)
+    }
+  }
+  
+  function closeNav () {
+    setMenuVisible(false)
   }
 
   return (
     <div >
-      <button className="menuButton" onClick={openNav}>
+      <button className="menuButton" onClick={toggleNav}>
         Menu
         {/*<img*/}
         {/*  className="Logo"*/}
@@ -76,13 +72,10 @@ const NavBar = ({ setUser, user }) => {
       <nav className="navBar" style={{display: menuVisible === true ? "block":"none"}}>
         <ul className="navBar--ul">
           <li>
-            <button className="CloseButton" onClick={closeNav}>Close</button>
+            <Link to="/" onClick={closeNav}>Home</Link>
           </li>
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
+            <Link to="/profile" onClick={closeNav}>Profile</Link>
           </li>
           <li>
             {user === false && <div id="signInDiv"></div>}

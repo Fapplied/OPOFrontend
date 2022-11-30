@@ -5,8 +5,14 @@
   align-items: center;
 }
 
-.Problem-form {
-  padding-top: 3em;
+.ProblemFormWrapper {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  background-color: #d7e3e1;
+  padding: 2em;
+  z-index: 1;
 }
 
 .TextInput {

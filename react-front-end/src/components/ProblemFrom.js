@@ -24,7 +24,7 @@ const ProblemFrom = ({addProblem}) => {
   }
 
   return (
-    <div >
+    <div className="ProblemFormWrapper">
       <form className="Problem-form" onSubmit={handleSubmit}>
         <input
           className="TextInput"
