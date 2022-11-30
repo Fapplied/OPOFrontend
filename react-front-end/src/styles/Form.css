@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.Problem-form {
+  padding-top: 3em;
+}
+
 .TextInput {
   width: 25em;
   /*border-radius: 0.5em;*/
@@ -18,4 +22,10 @@
 
 .ConSection > div:nth-child(2) > form > button {
   color: #f38a8a;
+}
+
+@media only screen and (max-width: 425px) {
+  .TextInput {
+    width: 10em;
+  }
 }

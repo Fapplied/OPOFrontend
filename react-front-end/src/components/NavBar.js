@@ -1,4 +1,4 @@
-import logo from "../OPOlogo.jpg";
+// import logo from "../OPOlogo.jpg";
 import "../styles/NavBar.css";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { removeLS, getLS, setLS } from "../helpers/storage";
@@ -45,27 +45,39 @@ const NavBar = ({ setUser, user }) => {
   }, [user]);
 
 
+  // function openNav() {
+  //   if (menuVisible === false) {
+  //     setMenuVisible(true)
+  //   } else {
+  //     setMenuVisible(false)
+  //   }
+  // }
+
   function openNav() {
-    if (menuVisible === false) {
       setMenuVisible(true)
-    } else {
+  }
+
+  function closeNav() {
       setMenuVisible(false)
-    }
   }
 
   return (
     <div >
       <button className="menuButton" onClick={openNav}>
-        <img
-          className="Logo"
-          src={logo}
-          width="100px"
-          height="100px"
-          alt="logo"
-        />
+        Menu
+        {/*<img*/}
+        {/*  className="Logo"*/}
+        {/*  src=""*/}
+        {/*  width="100px"*/}
+        {/*  height="100px"*/}
+        {/*  alt="logo"*/}
+        {/*/>*/}
       </button>
-      <nav className="navBar" style={{display: menuVisible === true ? "none":"block"}}>
-        <ul className="nav__ul">
+      <nav className="navBar" style={{display: menuVisible === true ? "block":"none"}}>
+        <ul className="navBar--ul">
+          <li>
+            <button className="CloseButton" onClick={closeNav}>Close</button>
+          </li>
           <li>
             <Link to="/">Home</Link>
           </li>

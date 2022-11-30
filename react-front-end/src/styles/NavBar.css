@@ -1,20 +1,26 @@
-.Logo {
-  width: 15em;
-  filter: hue-rotate(100deg) saturate(40%);
-}
+/*.Logo {*/
+/*  width: 15em;*/
+/*  filter: hue-rotate(100deg) saturate(40%);*/
+/*}*/
 
-.menuButton {
- display: flex;
+.menuButton {;
+  display: flex;
   position: fixed;
 }
 
 .navBar {
   display: flex;
   justify-content: space-evenly;
-  width: 30em;
+  width: 10em;
   background-color: #ccc8c8;
   position: fixed;
-  margin-top: 10em;
+  height: 100vh;
+  padding: 0;
+  z-index: 1;
+}
+
+.navBar--ul {
+  padding: 0;
 }
 
 ul > li > button {

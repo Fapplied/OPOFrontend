@@ -6,7 +6,18 @@
 }
 
 .opinions {
-  width: 17em;
+  width: 19em;
   align-self: center;
   text-align: start;
+}
+@media only screen and (max-width: 370px) {
+  .opinions {
+    width: 8em;
+  }
+}
+
+@media only screen and (min-width:371px) and (max-width: 450px) {
+.opinions {
+  width: 13em;
+}
 }
