@@ -7,21 +7,8 @@ ul {
   list-style-type: none;
 }
 
-ul > li > button {
-  /* sign out button  */
-  width: 138px;
-  background-color: white;
-  border: 1px solid rgb(201, 201, 201);
-  padding: 0;
-  border-radius: 5px;
-}
-
 .Problem-List {
   padding: 0;
-}
-
-img {
-  filter: hue-rotate(100deg) saturate(40%);
 }
 
 #signInDiv {
@@ -30,24 +17,6 @@ img {
   margin: 0;
   padding: 0;
   overflow: hidden;
-}
-
-.Logo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px;
-  display: none;
-}
-
-.nav__ul {
-  display: flex;
-  justify-content: space-evenly;
-  /* height: 100px; */
-}
-
-.navBar {
-  background-color: white;
 }
 
 .hidden {

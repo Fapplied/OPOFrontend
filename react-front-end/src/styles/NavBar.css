@@ -1,0 +1,27 @@
+.Logo {
+  width: 15em;
+  filter: hue-rotate(100deg) saturate(40%);
+}
+
+.menuButton {
+ display: flex;
+}
+
+.nav__ul {
+  display: flex;
+  justify-content: space-evenly;
+  /* height: 100px; */
+}
+
+.navBar {
+  background-color: white;
+}
+
+ul > li > button {
+  /* sign out button  */
+  width: 138px;
+  background-color: white;
+  border: 1px solid rgb(201, 201, 201);
+  padding: 0;
+  border-radius: 5px;
+}
