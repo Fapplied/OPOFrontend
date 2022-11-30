@@ -5,16 +5,16 @@
 
 .menuButton {
  display: flex;
-}
-
-.nav__ul {
-  display: flex;
-  justify-content: space-evenly;
-  /* height: 100px; */
+  position: fixed;
 }
 
 .navBar {
-  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  width: 30em;
+  background-color: #ccc8c8;
+  position: fixed;
+  margin-top: 10em;
 }
 
 ul > li > button {

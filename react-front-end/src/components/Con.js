@@ -68,7 +68,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes }) => {
           <p style={{ color: "black" }}>{likes}</p>
           <IconButton onClick={handleUpVoteClick}>
             {isLiked ? (
-              <KeyboardDoubleArrowUpOutlinedIcon />
+              <KeyboardDoubleArrowUpOutlinedIcon htmlColor="green"/>
             ) : (
               <KeyboardArrowUpOutlinedIcon />
             )}
