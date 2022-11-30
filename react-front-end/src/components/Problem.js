@@ -10,15 +10,16 @@ const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
 const Problem = ({ user, problem, getProblems }) => {
   const { problemId, userId } = problem;
+  const [name, setName] = useState(null)
   const [picURL, setPicURL] = useState();
   const [allLikes, setAllLikes] = useState(false);
-
   const allLikesURL = `https://opobackend.azurewebsites.net/api/Likes/all/${problemId}`;
 
   useEffect(() => {
     const getAllLikes = async (url) => {
       const likes = await axios.get(allLikesURL).then((r) => r.data);
       setAllLikes(likes);
+      axios.get(`https://opobackend.azurewebsites.net/api/users/${userId ?? user.data.userId}`).then(res => setName(res.data.name))
     };
 
     getAllLikes(allLikesURL);
@@ -45,10 +46,13 @@ const Problem = ({ user, problem, getProblems }) => {
   return (
     <div className="problem">
       <div className="problem-header" style={{ display: "flex" }}>
+        <div>
         <Avatar
           style={{ border: "solid grey", margin: "1vw", marginTop: "1vw" }}
           src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
         />
+          <span><b> {name}</b></span>
+        </div>
         <h4>{problem.title}</h4>
         <h6>All ProLikes = {allLikes.proLikes}</h6>
         <h6>All ConLikes = {allLikes.conLikes}</h6>
