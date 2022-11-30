@@ -19,6 +19,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes }) => {
   const [isLiked, setIsLiked] = useState(false);
   const user = getLS("User2");
 
+  console.log()
   const location = useLocation();
 
   const handleUpVoteClick = async () => {

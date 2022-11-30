@@ -10,7 +10,7 @@ const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
 const Problem = ({ user, problem, getProblems }) => {
   const { problemId, userId } = problem;
-
+  const [picURL, setPicURL] = useState();
   const [allLikes, setAllLikes] = useState(false);
 
   const allLikesURL = `https://opobackend.azurewebsites.net/api/Likes/all/${problemId}`;
@@ -40,7 +40,6 @@ const Problem = ({ user, problem, getProblems }) => {
   
   useEffect( () => {
     asyncprofilePic();
-    console.log(PicURL);
     }, []
   )
   
@@ -50,7 +49,7 @@ const Problem = ({ user, problem, getProblems }) => {
       <div className="problem-header" style={{ display: "flex" }}>
         <Avatar
           style={{ border: "solid grey", margin: "1vw", marginTop: "1vw" }}
-          src={PicURL ?? `https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
+          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
         />
         <h4>{problem.title}</h4>
         <h6>All ProLikes = {allLikes.proLikes}</h6>
