@@ -6,12 +6,12 @@ import axios from "axios";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import { getLS } from "../helpers/storage";
-import "../styles/ProConListItem.css"
+import "../styles/ProConListItem.css";
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/pro";
-const PRO_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Pros';
+const PRO_ENDPOINT = "https://opobackend.azurewebsites.net/api/Pros";
 
-const Pro = ({ pro, getProblems }) => {
+const Pro = ({ pro, getProblems, allLikes, setAllLikes }) => {
   const { title, proId } = pro;
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -25,18 +25,21 @@ const Pro = ({ pro, getProblems }) => {
       2
     );
     if (status === 201 || status === 204) {
+      const newAllLikes = { ...allLikes };
+      newAllLikes.proLikes =
+        isLiked == false ? newAllLikes.proLikes + 1 : newAllLikes.proLikes - 1;
+      setAllLikes(newAllLikes);
+      setLikes(isLiked == false ? likes + 1 : likes - 1);
       setIsLiked((prevState) => !prevState);
-      getLikes();
     }
   };
 
   const handleDelete = async () => {
     const { status } = await axios.delete(PRO_ENDPOINT + `/${proId}`);
     if (status === 204) {
-
       await getProblems();
     }
-  }
+  };
 
   const getLikes = async () => {
     const { data, status } = await axios.get(Likes_ENDPOINT + `/${proId}`);
@@ -84,4 +87,3 @@ const Pro = ({ pro, getProblems }) => {
 };
 
 export default Pro;
-

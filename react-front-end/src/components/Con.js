@@ -6,27 +6,30 @@ import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubl
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import { useLocation } from "react-router-dom";
 import { getLS } from "../helpers/storage";
-import "../styles/ProConListItem.css"
+import "../styles/ProConListItem.css";
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
-const Cons_ENDPOINT = 'https://opobackend.azurewebsites.net/api/Cons';
+const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
 
-
-const Con = ({ con, getProblems }) => {
+const Con = ({ con, getProblems, allLikes, setAllLikes }) => {
   const { title, conId, problemId } = con;
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const user = getLS("User2");
 
   const location = useLocation();
-  
+
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
       Likes_ENDPOINT + `?conId=${conId}`,
       1
     );
     if (status === 201 || status === 204) {
-      getLikes();
+      const newAllLikes = { ...allLikes };
+      newAllLikes.conLikes =
+        isLiked == false ? newAllLikes.conLikes + 1 : newAllLikes.conLikes - 1;
+      setAllLikes(newAllLikes);
+      setLikes(isLiked == false ? likes + 1 : likes - 1);
       setIsLiked((prevState) => !prevState);
     }
   };
@@ -36,7 +39,7 @@ const Con = ({ con, getProblems }) => {
     if (status === 204) {
       await getProblems();
     }
-  }
+  };
   const getLikes = async () => {
     const { data, status } = await axios.get(Likes_ENDPOINT + `/${conId}`);
     if (status === 200 && Number.isInteger(data.length)) {
@@ -55,9 +58,9 @@ const Con = ({ con, getProblems }) => {
         src={`https://avatars.dicebear.com/api/open-peeps/${conId}.svg`}
       />
       {location.pathname === "/" && !user ? (
-          <div>
-            <p style={{ color: "black" }}>{likes}</p>
-          </div>
+        <div>
+          <p style={{ color: "black" }}>{likes}</p>
+        </div>
       ) : (
         <div>
           <p style={{ color: "black" }}>{likes}</p>

@@ -7,7 +7,7 @@ import "../styles/ProConList.css";
 const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 
-const ConsList = ({ problem, user, getProblems }) => {
+const ConsList = ({ problem, user, allLikes, setAllLikes }) => {
   const { conList, problemId } = problem;
   const { userId } = user;
 
@@ -40,14 +40,19 @@ const ConsList = ({ problem, user, getProblems }) => {
     <section className="ProConSection ConSection">
       <div className="ProConWrapper">
         <div className="ListHeader">
-        <h3 className="ProConHeader">Cons</h3>
-        <p className="">({conList.length})</p>
+          <h3 className="ProConHeader">Cons</h3>
+          <p className="">({conList.length})</p>
         </div>
         {conList && (
           <ul className="ProsConsList">
             {cons.map((con) => (
               <li key={con.conId}>
-                <Con getProblems={getOneProblem} con={con} />
+                <Con
+                  getProblems={getOneProblem}
+                  con={con}
+                  allLikes={allLikes}
+                  setAllLikes={setAllLikes}
+                />
               </li>
             ))}
           </ul>

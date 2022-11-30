@@ -52,8 +52,20 @@ const Problem = ({ user, problem, getProblems }) => {
         )}
       </div>
       <div className="problem-lists">
-        <ProsList className="list" user={user} problem={problem} />
-        <ConsList className="list" user={user} problem={problem} />
+        <ProsList
+          className="list"
+          user={user}
+          problem={problem}
+          allLikes={allLikes}
+          setAllLikes={setAllLikes}
+        />
+        <ConsList
+          className="list"
+          user={user}
+          problem={problem}
+          allLikes={allLikes}
+          setAllLikes={setAllLikes}
+        />
       </div>
     </div>
   );
