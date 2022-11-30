@@ -42,22 +42,24 @@ const Profile = ({ user }) => {
   };
 
   useEffect(() => {
-    const trial = getLS("profpic");
-    console.log({ trial });
-    if (trial === false) {
-      axios
-        .get(
-          `https://opobackend.azurewebsites.net/api/ProfilePictures/${
-            user.userId ?? user.data.userId
-          }`
-        )
-        .then((res) => {
-          setLS("profpic", res.data);
-          setPicURL(res.data.url);
-        });
-    } else {
-      setPicURL(trial);
-    }
+    axios.get(`https://opobackend.azurewebsites.net/api/users/${user.userId ?? user.data.userId}`).then(res => setPicURL(res.data.profilePicture.url))
+
+    // const trial = getLS("profpic");
+    // console.log({ trial });
+    // if (trial === false) {
+    //   axios
+    //     .get(
+    //       `https://opobackend.azurewebsites.net/api/ProfilePictures/${
+    //         user.userId ?? user.data.userId
+    //       }`
+    //     )
+    //     .then((res) => {
+    //       setLS("profpic", res.data);
+    //       setPicURL(res.data.url);
+    //     });
+    // } else {
+    //   setPicURL(trial);
+    // }
   }, []);
 
   return (
