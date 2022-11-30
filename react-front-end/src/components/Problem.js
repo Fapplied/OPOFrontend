@@ -18,6 +18,8 @@ const Problem = ({ user, problem, getProblems }) => {
   useEffect(() => {
     const getAllLikes = async (url) => {
       const likes = await axios.get(allLikesURL).then((r) => r.data);
+
+      console.log({ likes, problemId });
       setAllLikes(likes);
     };
 
@@ -39,8 +41,8 @@ const Problem = ({ user, problem, getProblems }) => {
           src={`https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
         />
         <h4>{problem.title}</h4>
-        <h6>All ProLikes = {allLikes.ProLikes}</h6>
-        <h6>All ConLikes = {allLikes.ConLikes}</h6>
+        <h6>All ProLikes = {allLikes.proLikes}</h6>
+        <h6>All ConLikes = {allLikes.conLikes}</h6>
         {location.pathname === "/profile" && user ? (
           <IconButton onClick={clickDelete}>
             <DeleteIcon />
