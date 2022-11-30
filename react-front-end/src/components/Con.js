@@ -10,6 +10,8 @@ import "../styles/ProConListItem.css";
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
 const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
+const Cons2_ENDPOINT = "https://localhost:7057/api/Cons";
+const Likes2_ENDPOINT = "https://localhost:7057/api/Likes/con";
 
 const Con = ({ con, getProblems, allLikes, setAllLikes }) => {
   const { title, conId, problemId } = con;
@@ -21,8 +23,8 @@ const Con = ({ con, getProblems, allLikes, setAllLikes }) => {
 
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
-      Likes_ENDPOINT + `?conId=${conId}`,
-      1
+      Likes_ENDPOINT +
+        `?conId=${conId}&userId=${user.userId ?? user.data.userId}`
     );
     if (status === 201 || status === 204) {
       const newAllLikes = { ...allLikes };

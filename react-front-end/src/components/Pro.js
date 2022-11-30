@@ -21,8 +21,8 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes }) => {
 
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
-      Likes_ENDPOINT + `?proId=${proId}`,
-      2
+      Likes_ENDPOINT +
+        `?proId=${proId}&userId=${user.userId ?? user.data.userId}`
     );
     if (status === 201 || status === 204) {
       const newAllLikes = { ...allLikes };
