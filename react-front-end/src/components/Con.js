@@ -4,6 +4,7 @@ import { Avatar, IconButton } from "@mui/material";
 import axios from "axios";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
+import SchoolIcon from '@mui/icons-material/School';
 import { useLocation } from "react-router-dom";
 import { getLS } from "../helpers/storage";
 import "../styles/ProConListItem.css";
@@ -70,13 +71,13 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   }, []);
 
   return (
-    <div className="ProConList-Item">
+    <div className="ProConList-Item" style={{backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD":"white" }}>
       <div>
+        {proOwnerId == problemOwnerId ? <SchoolIcon/> : <br />}
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
         src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
       />
-      {proOwnerId == problemOwnerId ? <p>Owner</p> : <br />}
 </div>
       {location.pathname === "/" && !user ? (
         <div>
