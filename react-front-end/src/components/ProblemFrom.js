@@ -30,7 +30,7 @@ const ProblemFrom = ({addProblem}) => {
           className="TextInput"
           type="text"
           name="task"
-          placeholder="What's bothering you?..." 
+          placeholder="What's bothering you?" 
           value={problem.Title}
           onChange={handleTaskInputChange}
         />

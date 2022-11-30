@@ -36,9 +36,10 @@ const ProList = ({ problem, user }) => {
   return (
     <section className="ProConSection ProSection">
       <div className="ProConWrapper">
-        <h3>Pros</h3>
-        <p className="">{proList.length}</p>
-
+        <div className="ListHeader">
+        <h3 className="ProConHeader">Pros</h3>
+        <p className="">({proList.length})</p>
+        </div>
         {proList && (
           <ul className="ProsConsList">
             {pros.map((pro) => (

@@ -80,7 +80,7 @@ const Profile = ({ user }) => {
         type="file"
         id="my_file"
       ></input>
-      <IconButton
+      <IconButton className="AddPhotoIcon"
         onClick={() => {
           document.getElementById("my_file").click();
         }}
@@ -88,7 +88,7 @@ const Profile = ({ user }) => {
         <AddAPhotoIcon />
       </IconButton>
 
-      <h3>{user.name ?? user.data.name}</h3>
+      <h2>{user.name ?? user.data.name}</h2>
     </div>
   );
 };

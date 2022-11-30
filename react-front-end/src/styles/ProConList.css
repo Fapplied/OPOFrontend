@@ -13,9 +13,17 @@ p {
 .ProsConsList {
   padding: 0;
   margin: 1em;
+  height: 12em;
+  overflow: scroll;
 }
 
-.ProConWrapper {
-  height: 15em;
-  overflow: scroll;
+.ListHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em;
+}
+
+.ProConHeader {
+  font-size: 1.2em;
 }
