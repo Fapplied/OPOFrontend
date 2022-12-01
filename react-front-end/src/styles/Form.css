@@ -8,17 +8,18 @@
   display: flex;
   justify-content: center;
   position: sticky;
-  top: 4em;
+  top: 6em;
   background-color: #d7e3e1;
   padding: 2em;
   z-index: 1;
-  margin-top: 6em;
+  width: 100vw;
 }
 
 .TextInput {
   width: 22em;
   padding: 0.5em;
   border: transparent;
+  border-radius: 0.4em;
 }
 
 .ProSection > div:nth-child(2) > form > button {

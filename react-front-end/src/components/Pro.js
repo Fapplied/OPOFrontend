@@ -71,8 +71,8 @@ const Pro = ({pro, getProblems, allLikes, setAllLikes, problemOwnerId}) => {
 
   return (
     <div className="ProConList-Item" style={{
-      boxShadow: proOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px" : "solid",
-      borderColor: proOwnerId == problemOwnerId ? "#F3C89D" : "solid"
+      boxShadow: proOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px", 
+      borderColor: proOwnerId == problemOwnerId ? "#F3C89D": "#DDDCDB"
     }}>
       <div>
         <Avatar

@@ -73,7 +73,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
 
   return (
     // <div className="ProConList-Item" style={{ backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD" : "white" }}>
-    <div className="ProConList-Item" style={{ boxShadow: conOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "solid", borderColor: conOwnerId == problemOwnerId ? "#F3C89D": "solid"}}>
+    <div className="ProConList-Item" style={{ boxShadow: conOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px", borderColor: conOwnerId == problemOwnerId ? "#F3C89D": "#DDDCDB"}}>
       <div>
         <Avatar
           style={{ border: "solid grey", margin: "1vw" }}
