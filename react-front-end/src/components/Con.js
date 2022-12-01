@@ -12,8 +12,7 @@ import "../styles/ProConListItem.css";
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
 const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
-const Cons2_ENDPOINT = "https://localhost:7057/api/Cons";
-const Likes2_ENDPOINT = "https://localhost:7057/api/Likes/con";
+
 
 const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const { title, conId, problemId } = con;
@@ -73,11 +72,11 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
 
   return (
     // <div className="ProConList-Item" style={{ backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD" : "white" }}>
-    <div className="ProConList-Item" style={{ boxShadow: conOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "solid", borderColor: conOwnerId == problemOwnerId ? "#F3C89D": "solid"}}>
+    <div className="ProConList-Item" style={{ boxShadow: conOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px", borderColor: conOwnerId == problemOwnerId ? "#F3C89D": "#DDDCDB"}}>
       <div>
         <Avatar
           style={{ border: "solid grey", margin: "1vw" }}
-          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${conOwnerId}.svg`}
+          src={picURL ?? `https://avatars.dicebear.com/api/big-ears/${conOwnerId}.svg`}
         />
         {conOwnerId == problemOwnerId ? <WorkspacePremiumIcon  titleAccess='Owner' className="badge"/> : <br />}
 

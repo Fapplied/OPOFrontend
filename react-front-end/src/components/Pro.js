@@ -71,13 +71,13 @@ const Pro = ({pro, getProblems, allLikes, setAllLikes, problemOwnerId}) => {
 
   return (
     <div className="ProConList-Item" style={{
-      boxShadow: proOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px" : "solid",
-      borderColor: proOwnerId == problemOwnerId ? "#F3C89D" : "solid"
+      boxShadow: proOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px", 
+      borderColor: proOwnerId == problemOwnerId ? "#F3C89D": "#DDDCDB"
     }}>
       <div>
         <Avatar
           style={{border: "solid grey", margin: "1vw"}}
-          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
+          src={picURL ?? `https://avatars.dicebear.com/api/big-ears/${proOwnerId}.svg`}
         />
         {proOwnerId == problemOwnerId ?  <WorkspacePremiumIcon titleAccess='Owner' className="badge"/>  : <br/>}
       </div>

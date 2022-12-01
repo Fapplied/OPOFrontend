@@ -50,7 +50,7 @@ const Problem = ({ user, problem, getProblems }) => {
           <Avatar
             className="avatar"
             style={{ border: "solid grey", margin: "1vw", marginTop: "1vw", backgroundColor:'white' }}
-            src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
+            src={picURL ?? `https://avatars.dicebear.com/api/big-ears/${userId}.svg`}
           />
           <span><b>{name?.split(" ")[0]}</b></span>
         </div>

@@ -14,9 +14,9 @@ p {
   padding: 0;
   margin: 0.5em;
   height: 12em;
-  overflow-y: scroll;
+  overflow: scroll;
   display: flex;
-
+  flex-direction: column;
 }
 
 .ListHeader {
@@ -31,25 +31,25 @@ p {
 }
 
 .empty-list {
- align-self: center;
+  align-self: center;
   width: 24em;
 }
 
-.spinner {
-  animation-name: spin;
-  animation-duration: 5000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
+/*.spinner {*/
+/*  animation-name: spin;*/
+/*  animation-duration: 5000ms;*/
+/*  animation-iteration-count: infinite;*/
+/*  animation-timing-function: linear;*/
+/*}*/
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/*@keyframes spin {*/
+/*  from {*/
+/*    transform: rotate(0deg);*/
+/*  }*/
+/*  to {*/
+/*    transform: rotate(360deg);*/
+/*  }*/
+/*}*/
 
 @media only screen and (min-width: 900px) {
   .ProsConsList {
