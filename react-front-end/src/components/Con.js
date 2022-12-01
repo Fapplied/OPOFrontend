@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import { Avatar, IconButton, Tooltip } from "@mui/material";
 import axios from "axios";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import SchoolIcon from '@mui/icons-material/School';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import { useLocation } from "react-router-dom";
 import { getLS } from "../helpers/storage";
 import "../styles/ProConListItem.css";
@@ -13,13 +12,12 @@ import "../styles/ProConListItem.css";
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
 const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
 
-
 const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const { title, conId, problemId } = con;
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [picURL, setPicURL] = useState();
-  const [conOwnerId, setConOwnerId] = useState(null)
+  const [conOwnerId, setConOwnerId] = useState(null);
   const user = getLS("User2");
 
   const location = useLocation();
@@ -27,7 +25,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
       Likes_ENDPOINT +
-      `?conId=${conId}&userId=${user.userId ?? user.data.userId}`
+        `?conId=${conId}&userId=${user.userId ?? user.data.userId}`
     );
     if (status === 201 || status === 204) {
       const newAllLikes = { ...allLikes };
@@ -51,19 +49,19 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
       setLikes(data.length);
       for (let i = 0; i < data.length; i++) {
         if (user.userId === data[i].userId) {
-          setIsLiked(true)
+          setIsLiked(true);
         }
       }
-
     }
   };
 
   const getPic = async () => {
     const { data, status } = await axios.get(Cons_ENDPOINT + `/${conId}`);
-    setConOwnerId(data.userId)
-    axios.get(`https://opobackend.azurewebsites.net/api/users/${data.userId}`).then(res => setPicURL(res.data.profilePicture.url))
-
-  }
+    setConOwnerId(data.userId);
+    axios
+      .get(`https://opobackend.azurewebsites.net/api/users/${data.userId}`)
+      .then((res) => setPicURL(res.data.profilePicture.url));
+  };
 
   useEffect(() => {
     getLikes();
@@ -71,15 +69,29 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   }, []);
 
   return (
-    // <div className="ProConList-Item" style={{ backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD" : "white" }}>
-    <div className="ProConList-Item" style={{ boxShadow: conOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px", borderColor: conOwnerId == problemOwnerId ? "#F3C89D": "#DDDCDB"}}>
+    <div
+      className="ProConList-Item"
+      style={{
+        boxShadow:
+          conOwnerId == problemOwnerId
+            ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px"
+            : "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px",
+        borderColor: conOwnerId == problemOwnerId ? "#F3C89D" : "#DDDCDB",
+      }}
+    >
       <div>
         <Avatar
           style={{ border: "solid grey", margin: "1vw" }}
-          src={picURL ?? `https://avatars.dicebear.com/api/big-ears/${conOwnerId}.svg`}
+          src={
+            picURL ??
+            `https://avatars.dicebear.com/api/big-ears/${conOwnerId}.svg`
+          }
         />
-        {conOwnerId == problemOwnerId ? <WorkspacePremiumIcon  titleAccess='Owner' className="badge"/> : <br />}
-
+        {conOwnerId == problemOwnerId ? (
+          <WorkspacePremiumIcon titleAccess="Owner" className="badge" />
+        ) : (
+          <br />
+        )}
       </div>
       {location.pathname === "/" && !user ? (
         <div>
@@ -89,26 +101,26 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
         <div>
           <p style={{ color: "black" }}>{likes}</p>
           {isLiked ? (
-            <Tooltip title='Unlike'>
+            <Tooltip title="Unlike">
               <IconButton onClick={handleUpVoteClick}>
-                <KeyboardDoubleArrowUpOutlinedIcon htmlColor="green"/>
+                <KeyboardDoubleArrowUpOutlinedIcon htmlColor="green" />
               </IconButton>
             </Tooltip>
           ) : (
-            <Tooltip title='Like'>
+            <Tooltip title="Like">
               <IconButton onClick={handleUpVoteClick}>
-                <KeyboardArrowUpOutlinedIcon/>
+                <KeyboardArrowUpOutlinedIcon />
               </IconButton>
             </Tooltip>
           )}
         </div>
       )}
       <p className="opinions">{title}</p>
-      {location.pathname === "/profile" || user.userId === conOwnerId ?  (
+      {location.pathname === "/profile" || user.userId === conOwnerId ? (
         <Tooltip title="Delete">
-        <IconButton onClick={handleDelete}>
-          <CloseIcon/>
-        </IconButton>
+          <IconButton onClick={handleDelete}>
+            <CloseIcon />
+          </IconButton>
         </Tooltip>
       ) : (
         <br />

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button"
 import { IconButton, Tooltip } from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
-import "../styles/Form.css"
+import AddIcon from "@mui/icons-material/Add";
+import "../styles/Form.css";
 import Picker from "emoji-picker-react";
 
 const ConForm = ({ addCon }) => {
@@ -12,21 +11,16 @@ const ConForm = ({ addCon }) => {
   const [showPicker, setShowPicker] = useState(false);
 
   const onEmojiClick = (event, emojiObject) => {
-
     setCon({ ...con, Disadvantage: con.Disadvantage + emojiObject.emoji });
     setShowPicker(false);
   };
 
-
   function handleTaskInputChange(e) {
-    // e.target.value contains new input from onChange
-    // event for input elements
     setCon({ ...con, Disadvantage: e.target.value });
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); // prevents browser refresh
-    // trim() gets rid of string whitespace
+    e.preventDefault();
     if (con.Disadvantage.trim()) {
       addCon({ ...con });
       setCon({ ...con, Disadvantage: "" });
@@ -47,13 +41,18 @@ const ConForm = ({ addCon }) => {
         <img
           className="emoji-icon"
           src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
-          onClick={() => setShowPicker(val => !val)} alt='Emoji' />
+          onClick={() => setShowPicker((val) => !val)}
+          alt="Emoji"
+        />
         <div className="picker-wrapper">
-          {showPicker && <Picker
-            pickerStyle={{ width: '100%' }}
-            onEmojiClick={onEmojiClick} />}
+          {showPicker && (
+            <Picker
+              pickerStyle={{ width: "100%" }}
+              onEmojiClick={onEmojiClick}
+            />
+          )}
         </div>
-        <Tooltip title='Add con'>
+        <Tooltip title="Add con">
           <IconButton className="prosconButton" type="submit">
             <AddIcon />
           </IconButton>

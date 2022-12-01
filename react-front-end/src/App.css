@@ -1,4 +1,3 @@
-/* Arrow 1: :::::::: */
 .arrow-10 {
   transform: rotate(180deg);
   width: 30px;
@@ -56,8 +55,6 @@
     margin: 20px -15px 0;
   }
 }
-
-/* Arrow 1 ^^^^^^^^^^ */
 
 .App {
   text-align: center;

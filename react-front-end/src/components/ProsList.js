@@ -3,7 +3,7 @@ import Pro from "./Pro";
 import axios from "axios";
 import ProForm from "./ProForm";
 import "../styles/ProConList.css";
-import PostAddIcon from '@mui/icons-material/PostAdd';
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
 const Pro_ENDPOINT = "https://opobackend.azurewebsites.net/api/Pros";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
@@ -17,7 +17,6 @@ const ProList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
   });
 
   const addPro = async (pro) => {
-    // adds new pro to beginning of cons array
     const { Advantage } = pro;
     const { status } = await axios.post(
       Pro_ENDPOINT + `?problemId=${problemId}`,
@@ -43,17 +42,27 @@ const ProList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
         </div>
         {proList && (
           <ul className="ProsConsList">
-            {pros.length !== 0 ? pros.map((pro) => (
-              <li key={pro.proId}>
-                <Pro
-                  getProblems={getOneProblem}
-                  pro={pro}
-                  allLikes={allLikes}
-                  setAllLikes={setAllLikes}
-                  problemOwnerId={problemOwnerId}
-                />
-              </li>
-            )): <div className="empty-list"><PostAddIcon /><p >No pros added yet,<br/>  Add One!</p></div>}
+            {pros.length !== 0 ? (
+              pros.map((pro) => (
+                <li key={pro.proId}>
+                  <Pro
+                    getProblems={getOneProblem}
+                    pro={pro}
+                    allLikes={allLikes}
+                    setAllLikes={setAllLikes}
+                    problemOwnerId={problemOwnerId}
+                  />
+                </li>
+              ))
+            ) : (
+              <div className="empty-list">
+                <PostAddIcon />
+                <p>
+                  No pros added yet,
+                  <br /> Add One!
+                </p>
+              </div>
+            )}
           </ul>
         )}
       </div>

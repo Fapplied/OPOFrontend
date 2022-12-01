@@ -1,25 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import "../styles/Form.css"
+import "../styles/Form.css";
 
-const ProblemFrom = ({addProblem}) => {
+const ProblemFrom = ({ addProblem }) => {
   const [problem, setProblem] = useState({
     Title: "",
   });
 
-
   function handleTaskInputChange(e) {
-    // e.target.value contains new input from onChange
-    // event for input elements
-    setProblem({...problem, Title: e.target.value});
+    setProblem({ ...problem, Title: e.target.value });
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); // prevents browser refresh
-    // trim() gets rid of string whitespace
+    e.preventDefault();
     if (problem.Title.trim()) {
-      addProblem({...problem});
-      setProblem({...problem, Title: ""});
+      addProblem({ ...problem });
+      setProblem({ ...problem, Title: "" });
     }
   }
 
@@ -30,7 +26,7 @@ const ProblemFrom = ({addProblem}) => {
           className="TextInput"
           type="text"
           name="task"
-          placeholder="What's bothering you?" 
+          placeholder="What's bothering you?"
           value={problem.Title}
           onChange={handleTaskInputChange}
         />

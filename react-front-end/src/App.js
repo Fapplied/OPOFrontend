@@ -7,7 +7,8 @@ import { getLS } from "./helpers/storage";
 import UserProblems from "./components/UserProblems";
 import Profile from "./components/Profile";
 import NavigationMenu from "./components/NavigationMenu";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
+import Landing from "./components/Landing";
 
 function App() {
   const [user, setUser] = useState(getLS("User2"));
@@ -18,11 +19,12 @@ function App() {
     <>
       <Helmet>
         <title> OPO - Other Peoples Opinion</title>
-        <meta name="description" content="Social media network to get other peoples opinion" />
+        <meta
+          name="description"
+          content="Social media network to get other peoples opinion"
+        />
         <meta charSet="utf-8" />
-        <meta name="author" content="Camille, Rinaldo and Felix"/>
-        
-        
+        <meta name="author" content="Camille, Rinaldo and Felix" />
       </Helmet>
       <BrowserRouter>
         <div className="App">
@@ -56,7 +58,6 @@ function App() {
               }
             ></Route>
           </Routes>
-          {/*<Footer/>*/}
         </div>
       </BrowserRouter>
     </>

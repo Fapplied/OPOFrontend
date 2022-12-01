@@ -3,9 +3,8 @@ import Problem from "./Problem";
 import axios, { Axios } from "axios";
 import ProblemFrom from "./ProblemFrom";
 import PuffLoader from "react-spinners/PuffLoader";
-import "../styles/Loading.css"
-import "../styles/ProblemList.css"
-
+import "../styles/Loading.css";
+import "../styles/ProblemList.css";
 
 const UserProblems = ({ user }) => {
   const { userId } = user;
@@ -18,7 +17,7 @@ const UserProblems = ({ user }) => {
   console.log("GET PROBLEMS URL", PROBLEMS_ENDPOINT + `/${user.userId}`);
 
   const [problems, setProblems] = useState([]);
-  
+
   const getProblems = async () => {
     const currentUserId = user.userId ?? user.data.userId;
     const { data, status } = await axios
@@ -32,7 +31,6 @@ const UserProblems = ({ user }) => {
   };
 
   const addProblem = async (problem) => {
-    // adds new con to beginning of problems array
     const { status } = await axios.post(
       PROBLEMS_ENDPOINT2 + `?userId=${userId}`,
       problem
@@ -46,23 +44,27 @@ const UserProblems = ({ user }) => {
     getProblems();
   }, []);
 
-  //fetch and Map problems
   return (
     <div>
       <ProblemFrom addProblem={addProblem} />
-      {/* <img src={logo} alt="logo" width="500px" /> */}
-      {loading ?  <div className="Userloading"> <PuffLoader className="PuffLoader" size={200} color="#E88721"/> </div>: (
-      <ul className="Problem-List">
-        {[...problems].reverse().map((problem) => (
-          <li key={problem.problemId}>
-            <Problem
-              user={user}
-              getProblems={getProblems}
-              problem={problem}
-            />
-          </li>
-        ))}
-      </ul>)}
+      {loading ? (
+        <div className="Userloading">
+          {" "}
+          <PuffLoader className="PuffLoader" size={200} color="#E88721" />{" "}
+        </div>
+      ) : (
+        <ul className="Problem-List">
+          {[...problems].reverse().map((problem) => (
+            <li key={problem.problemId}>
+              <Problem
+                user={user}
+                getProblems={getProblems}
+                problem={problem}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
