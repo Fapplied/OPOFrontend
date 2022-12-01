@@ -12,8 +12,7 @@ import "../styles/ProConListItem.css";
 
 const Likes_ENDPOINT = "https://opobackend.azurewebsites.net/api/Likes/con";
 const Cons_ENDPOINT = "https://opobackend.azurewebsites.net/api/Cons";
-const Cons2_ENDPOINT = "https://localhost:7057/api/Cons";
-const Likes2_ENDPOINT = "https://localhost:7057/api/Likes/con";
+
 
 const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const { title, conId, problemId } = con;
@@ -77,7 +76,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
       <div>
         <Avatar
           style={{ border: "solid grey", margin: "1vw" }}
-          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${conOwnerId}.svg`}
+          src={picURL ?? `https://avatars.dicebear.com/api/big-ears/${conOwnerId}.svg`}
         />
         {conOwnerId == problemOwnerId ? <WorkspacePremiumIcon  titleAccess='Owner' className="badge"/> : <br />}
 

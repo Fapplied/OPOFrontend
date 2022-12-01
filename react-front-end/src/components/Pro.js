@@ -77,7 +77,7 @@ const Pro = ({pro, getProblems, allLikes, setAllLikes, problemOwnerId}) => {
       <div>
         <Avatar
           style={{border: "solid grey", margin: "1vw"}}
-          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
+          src={picURL ?? `https://avatars.dicebear.com/api/big-ears/${proOwnerId}.svg`}
         />
         {proOwnerId == problemOwnerId ?  <WorkspacePremiumIcon titleAccess='Owner' className="badge"/>  : <br/>}
       </div>
