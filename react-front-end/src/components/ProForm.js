@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import AddIcon from '@mui/icons-material/Add';
 import "../styles/Form.css"
-import { IconButton } from "@mui/material";
+import {IconButton, Tooltip} from "@mui/material";
 
 const ProForm = ({ addPro }) => {
   const [pro, setPro] = useState({
@@ -35,9 +35,11 @@ const ProForm = ({ addPro }) => {
           value={pro.Advantage}
           onChange={handleTaskInputChange}
         />
+        <Tooltip title='Add pro'>
       <IconButton className="prosconButton" type="submit">
         <AddIcon />
     </IconButton>
+        </Tooltip>
       </form>
     </div>
   );

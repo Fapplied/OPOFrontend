@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button"
-import { IconButton } from "@mui/material";
+import {IconButton, Tooltip} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import "../styles/Form.css"
 
@@ -34,9 +34,11 @@ const ConForm = ({ addCon }) => {
           value={con.Disadvantage}
           onChange={handleTaskInputChange}
         />
+        <Tooltip title='Add con'>
       <IconButton type="submit">
         <AddIcon />
     </IconButton>
+        </Tooltip>
       </form>
     </div>
   );

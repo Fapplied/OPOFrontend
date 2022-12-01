@@ -89,13 +89,19 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
       ) : (
         <div>
           <p style={{ color: "black" }}>{likes}</p>
-          <IconButton onClick={handleUpVoteClick}>
-            {isLiked ? (
-              <KeyboardDoubleArrowUpOutlinedIcon htmlColor="green" />
-            ) : (
-              <KeyboardArrowUpOutlinedIcon />
-            )}
-          </IconButton>
+          {isLiked ? (
+            <Tooltip title='Unlike'>
+              <IconButton onClick={handleUpVoteClick}>
+                <KeyboardDoubleArrowUpOutlinedIcon htmlColor="green"/>
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <Tooltip title='Like'>
+              <IconButton onClick={handleUpVoteClick}>
+                <KeyboardArrowUpOutlinedIcon/>
+              </IconButton>
+            </Tooltip>
+          )}
         </div>
       )}
       <p className="opinions">{title}</p>
