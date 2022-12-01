@@ -1,5 +1,5 @@
 // import * as React from 'react';
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -17,8 +17,11 @@ import { removeLS, setLS } from "../helpers/storage";
 import jwtDecode from "jwt-decode";
 import endpoints from "../helpers/endpoints";
 import "../styles/NavigationMenu.css";
-import { ListItemAvatar } from "@mui/material";
-import { Google } from "@mui/icons-material";
+import { IconButton} from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 const NavigationMenu = ({ setUser, user }) => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -99,34 +102,41 @@ const NavigationMenu = ({ setUser, user }) => {
           </ListItemButton>
         </ListItem>}
         {user !== false && <ListItem disablePadding>
-        <ListItemButton onClick={handleSignOut}>
-          <ListItemIcon>
-            <LogoutIcon/>
-          </ListItemIcon>
-          <ListItemText primary={"Sign Out"} />
-        </ListItemButton>
-        </ListItem>}
-        {user === false && <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={handleSignOut}>
             <ListItemIcon>
-              <Google/>
+              <LogoutIcon />
             </ListItemIcon>
-            <ListItemText primary={""}/>
+            <ListItemText primary={"Sign Out"} />
           </ListItemButton>
         </ListItem>}
       </List>
     </Box>
   );
-  
+
   return (
-<div>
-    {user === false && <div id="signInDiv"></div>}
     <div>
-      <div>
-        <button className="menuButton" onClick={toggleDrawer('left', true)}>
-          {user !== false ? "Menu" : "Log In"}<MenuIcon/>
-        </button>
-      </div>
+      <div >
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar  >
+            <Toolbar className="app-bar">
+              <IconButton
+                onClick={toggleDrawer('left', true)}
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                OPO
+              </Typography>
+              {/*<div id="signInDiv"></div>*/}
+              {user === false ? <div id="signInDiv"></div> : <Button color="inherit" onClick={handleSignOut}>Sign Out</Button>}
+            </Toolbar>
+          </AppBar>
+        </Box>
         <Drawer
           anchor='left'
           open={menuVisible['left']}
@@ -134,9 +144,9 @@ const NavigationMenu = ({ setUser, user }) => {
         >
           {list('left')}
         </Drawer>
-    
+
+      </div>
     </div>
-</div>
   );
 }
 

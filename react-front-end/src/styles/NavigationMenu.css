@@ -1,6 +1,6 @@
 .menuButton {
   display: flex;
-  position: fixed;
+  /*position: fixed;*/
   align-items: center;
   margin: 0.3em;
   z-index: 3;
@@ -15,3 +15,8 @@
   padding: 0;
 }
 
+.app-bar {
+  /*background-color: #607370;*/
+  height: 4em;
+  background-image: linear-gradient(to right top, #7cafb5, #80b3b7, #84b7b9, #88babb, #8cbebd);
+}
