@@ -49,35 +49,25 @@ const TitleMessage = () => (
               delay: 50,
             }}
           />
-          {/* <div
-            class="arrow-10"
-            style={{ position: "absolute", bottom: "1rem", left: "12rem" }}
-          ></div> */}
           <div
-            id="arrowAnim"
-            style={{
-              transform: "rotate(270deg)",
-              position: "absolute",
-              bottom: "0",
-            }}
-          >
-            <div class="arrowSliding">
-              <div class="arrow"></div>
-            </div>
-            <div class="arrowSliding delay1">
-              <div class="arrow"></div>
-            </div>
-            <div class="arrowSliding delay2">
-              <div class="arrow"></div>
-            </div>
-            <div class="arrowSliding delay3">
-              <div class="arrow"></div>
-            </div>
-          </div>
-          {/* <div
             class="arrow-10"
-            style={{ position: "absolute", bottom: "1rem", right: "12rem" }}
-          ></div> */}
+            style={{
+              position: "absolute",
+              bottom: "1vh",
+              left: "5vw",
+              color: "grey",
+            }}
+          ></div>
+
+          <div
+            class="arrow-10"
+            style={{
+              position: "absolute",
+              bottom: "1vh",
+              right: "5vw",
+              color: "grey",
+            }}
+          ></div>
         </div>
       </div>
     </div>
