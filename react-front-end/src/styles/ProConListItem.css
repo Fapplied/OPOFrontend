@@ -6,7 +6,7 @@
 }
 
 .opinions {
-  width: auto;
+  min-width: auto;
   align-self: center;
   text-align: start;
 }
@@ -16,6 +16,6 @@
 
 @media only screen and (min-width: 900px) {
 .opinions {
-  width: 15em;
+  width: 14em;
 }
 }

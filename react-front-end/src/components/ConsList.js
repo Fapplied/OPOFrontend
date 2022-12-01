@@ -56,7 +56,7 @@ const ConsList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
                   problemOwnerId={problemOwnerId}
                 />
               </li>
-            )): <div className="empty-list"><HourglassTopIcon className="spinner"/><p >Waiting for cons!</p></div>}
+            )): <div className="empty-list"><HourglassTopIcon className="spinner"/><p >No cons added yet, <br/> Add One!</p></div>}
           </ul>
         )}
       </div>

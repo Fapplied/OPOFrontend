@@ -53,7 +53,7 @@ const ProList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
                   problemOwnerId={problemOwnerId}
                 />
               </li>
-            )): <div className="empty-list"><HourglassBottomIcon className="spinner"/><p >Waiting for pros!</p></div>}
+            )): <div className="empty-list"><HourglassBottomIcon className="spinner"/><p >No pros added yet,<br/>  Add One!</p></div>}
           </ul>
         )}
       </div>
