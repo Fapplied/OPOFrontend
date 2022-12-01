@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProsList from "./ProsList";
 import ConsList from "./ConsList";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, IconButton, Tooltip } from "@mui/material";
 import axios from "axios";
 import "../styles/Problem.css";
 
@@ -49,7 +49,7 @@ const Problem = ({ user, problem, getProblems }) => {
         <div>
           <Avatar
             className="avatar"
-            style={{ border: "solid grey", margin: "1vw", marginTop: "1vw" }}
+            style={{ border: "solid grey", margin: "1vw", marginTop: "1vw", backgroundColor:'white' }}
             src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
           />
           <span><b>{name?.split(" ")[0]}</b></span>
@@ -59,10 +59,12 @@ const Problem = ({ user, problem, getProblems }) => {
           <h6><span className="total-likes" style={{color: allLikes.proLikes > allLikes.conLikes ? "#84d052" : "#9a9a9a" }}>{allLikes.proLikes}</span> Pro Likes <span className="versus">vs</span> Con
             Likes <span className="total-likes" style={{color: allLikes.conLikes > allLikes.proLikes ? "#84d052" : "#9a9a9a" }}>{allLikes.conLikes}</span></h6>
         </div>
-        {location.pathname === "/profile" && user ? (
-          <IconButton onClick={clickDelete}>
+        {location.pathname === "/profile" || user.userId === userId  ? (
+            <Tooltip title="Delete">
+            <IconButton onClick={clickDelete}>
             <DeleteIcon />
           </IconButton>
+            </Tooltip>
         ) : (
           <br />
         )}

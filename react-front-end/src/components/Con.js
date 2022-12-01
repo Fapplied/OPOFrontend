@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Avatar, IconButton } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
+import { Avatar, IconButton, Tooltip } from "@mui/material";
 import axios from "axios";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
@@ -20,7 +20,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [picURL, setPicURL] = useState();
-  const [proOwnerId, setProOwnerId] = useState(null)
+  const [conOwnerId, setConOwnerId] = useState(null)
   const user = getLS("User2");
 
   const location = useLocation();
@@ -61,7 +61,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
 
   const getPic = async () => {
     const { data, status } = await axios.get(Cons_ENDPOINT + `/${conId}`);
-    setProOwnerId(data.userId)
+    setConOwnerId(data.userId)
     axios.get(`https://opobackend.azurewebsites.net/api/users/${data.userId}`).then(res => setPicURL(res.data.profilePicture.url))
 
   }
@@ -73,13 +73,13 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
 
   return (
     // <div className="ProConList-Item" style={{ backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD" : "white" }}>
-    <div className="ProConList-Item" style={{ boxShadow: proOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "solid", borderColor: proOwnerId == problemOwnerId ? "#F3C89D": "solid"}}>
+    <div className="ProConList-Item" style={{ boxShadow: conOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "solid", borderColor: conOwnerId == problemOwnerId ? "#F3C89D": "solid"}}>
       <div>
         <Avatar
           style={{ border: "solid grey", margin: "1vw" }}
-          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
+          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${conOwnerId}.svg`}
         />
-        {proOwnerId == problemOwnerId ? <WorkspacePremiumIcon  className="badge"/> : <br />}
+        {conOwnerId == problemOwnerId ? <WorkspacePremiumIcon  className="badge"/> : <br />}
 
       </div>
       {location.pathname === "/" && !user ? (
@@ -99,10 +99,12 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
         </div>
       )}
       <p className="opinions">{title}</p>
-      {location.pathname === "/profile" ? (
+      {location.pathname === "/profile" || user.userId === conOwnerId ?  (
+        <Tooltip title="Delete">
         <IconButton onClick={handleDelete}>
-          <DeleteIcon />
+          <CloseIcon/>
         </IconButton>
+        </Tooltip>
       ) : (
         <br />
       )}

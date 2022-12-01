@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Avatar, IconButton, Tooltip } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 import { Route, useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
@@ -95,10 +95,12 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
         </div>
       )}
       <p className="opinions">{title}</p>
-      {location.pathname === "/profile" ? (
+      {location.pathname === "/profile" || user.userId === proOwnerId ? (
+        <Tooltip title="Delete">
         <IconButton onClick={handleDelete}>
-          <DeleteIcon />
+          <CloseIcon />
         </IconButton>
+        </Tooltip>
       ) : (
         <br />
       )}
