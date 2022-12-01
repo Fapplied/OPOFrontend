@@ -34,11 +34,12 @@
   .TextInput {
     width: auto;
   }
+  
+  .emoji-icon {
+    display: none;
+  }
 }
 
-.picker{
-background-color: blue;
-}
 
 .picker-wrapper {
   height: 2em;
