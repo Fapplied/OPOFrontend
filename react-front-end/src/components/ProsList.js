@@ -43,7 +43,7 @@ const ProList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
         {proList && (
           <ul className="ProsConsList">
             {pros.length !== 0 ? (
-              pros.map((pro) => (
+              [...pros].reverse().map((pro) => (
                 <li key={pro.proId}>
                   <Pro
                     getProblems={getOneProblem}

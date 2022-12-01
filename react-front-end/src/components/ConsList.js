@@ -45,7 +45,7 @@ const ConsList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
         {conList && (
           <ul className="ProsConsList">
             {cons.length !== 0 ? (
-              cons.map((con) => (
+              [...cons].reverse().map((con) => (
                 <li key={con.conId}>
                   <Con
                     getProblems={getOneProblem}
