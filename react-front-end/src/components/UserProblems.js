@@ -5,6 +5,7 @@ import logo from "../OPOlogo.jpg";
 import ProblemFrom from "./ProblemFrom";
 import PuffLoader from "react-spinners/PuffLoader";
 import "../styles/Loading.css"
+import "../styles/ProblemList.css"
 
 
 const UserProblems = ({ user }) => {
@@ -51,7 +52,7 @@ const UserProblems = ({ user }) => {
     <div>
       <ProblemFrom addProblem={addProblem} />
       {/* <img src={logo} alt="logo" width="500px" /> */}
-      {loading ?  <div className="loading"> <PuffLoader className="PuffLoader" size={200} color="#E88721"/> </div>: (
+      {loading ?  <div className="Userloading"> <PuffLoader className="PuffLoader" size={200} color="#E88721"/> </div>: (
       <ul className="Problem-List">
         {[...problems].reverse().map((problem) => (
           <li key={problem.problemId}>

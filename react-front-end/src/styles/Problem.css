@@ -2,20 +2,37 @@
   border: solid #d8e8e6;
   border-radius: 0.5em;
   margin: 1em;
-  box-shadow: 0 0.5em 1em 0 #d8e8e6, 0 0.5em 1em 0 #e8ddd8;
+  box-shadow: 0 1.5em 2.5em 0 #b5c4c3, 0 1.5em 2.5em 0 #e8ddd8;
   background-color: white;
+  width: auto;
 }
 
 .problem-header {
-  justify-content: center;
-  background-color: #c8f1e3;
+  display: flex;
+  justify-content: space-around;
+  /*background-color: #c8f1e3;*/
+  background-image: linear-gradient(to right top, #a2e7ca, #abead1, #b5ecd7, #beefdd, #c8f1e3);
+  align-items: center;
 }
 
+.total-likes {
+  font-size: 3em;
+}
+
+h6 {
+  color: #9a9a9a;
+
+}
+
+.versus {
+  font-size: 2em;
+}
 
 @media only screen and (min-width: 900px) {
   .problem-lists {
     display: flex;
     justify-content: center;
+    width: 60em;
   }
 }
 

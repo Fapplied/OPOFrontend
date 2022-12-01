@@ -5,6 +5,7 @@ import axios from "axios";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import SchoolIcon from '@mui/icons-material/School';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { useLocation } from "react-router-dom";
 import { getLS } from "../helpers/storage";
 import "../styles/ProConListItem.css";
@@ -21,13 +22,13 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const [picURL, setPicURL] = useState();
   const [proOwnerId, setProOwnerId] = useState(null)
   const user = getLS("User2");
-  
+
   const location = useLocation();
 
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
       Likes_ENDPOINT +
-        `?conId=${conId}&userId=${user.userId ?? user.data.userId}`
+      `?conId=${conId}&userId=${user.userId ?? user.data.userId}`
     );
     if (status === 201 || status === 204) {
       const newAllLikes = { ...allLikes };
@@ -54,12 +55,12 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
           setIsLiked(true)
         }
       }
-     
+
     }
   };
 
   const getPic = async () => {
-    const { data, status } = await axios.get( Cons_ENDPOINT + `/${conId}`);
+    const { data, status } = await axios.get(Cons_ENDPOINT + `/${conId}`);
     setProOwnerId(data.userId)
     axios.get(`https://opobackend.azurewebsites.net/api/users/${data.userId}`).then(res => setPicURL(res.data.profilePicture.url))
 
@@ -71,14 +72,16 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   }, []);
 
   return (
-    <div className="ProConList-Item" style={{backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD":"white" }}>
+    // <div className="ProConList-Item" style={{ backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD" : "white" }}>
+    <div className="ProConList-Item" style={{ boxShadow: proOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "solid", borderColor: proOwnerId == problemOwnerId ? "#F3C89D": "solid"}}>
       <div>
-        {proOwnerId == problemOwnerId ? <SchoolIcon/> : <br />}
-      <Avatar
-        style={{ border: "solid grey", margin: "1vw" }}
-        src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
-      />
-</div>
+        <Avatar
+          style={{ border: "solid grey", margin: "1vw" }}
+          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
+        />
+        {proOwnerId == problemOwnerId ? <WorkspacePremiumIcon  className="badge"/> : <br />}
+
+      </div>
       {location.pathname === "/" && !user ? (
         <div>
           <p style={{ color: "black" }}>{likes}</p>
@@ -88,7 +91,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
           <p style={{ color: "black" }}>{likes}</p>
           <IconButton onClick={handleUpVoteClick}>
             {isLiked ? (
-              <KeyboardDoubleArrowUpOutlinedIcon htmlColor="green"/>
+              <KeyboardDoubleArrowUpOutlinedIcon htmlColor="green" />
             ) : (
               <KeyboardArrowUpOutlinedIcon />
             )}

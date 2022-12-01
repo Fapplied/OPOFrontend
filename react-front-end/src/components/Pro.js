@@ -5,6 +5,7 @@ import { Route, useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import SchoolIcon from '@mui/icons-material/School';
 import { getLS } from "../helpers/storage";
 import "../styles/ProConListItem.css";
@@ -53,7 +54,6 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
           setIsLiked(true)
         }
       }
-
     }
   };
 
@@ -70,13 +70,13 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   }, []);
 
   return (
-    <div className="ProConList-Item" style={{backgroundColor: proOwnerId == problemOwnerId ? "#FCE8BD":"white" }}>
+    <div className="ProConList-Item" style={{ boxShadow: proOwnerId == problemOwnerId ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px": "solid", borderColor: proOwnerId == problemOwnerId ? "#F3C89D": "solid"}}>
       <div>
-        {proOwnerId == problemOwnerId ? <SchoolIcon/> : <br />}
       <Avatar
         style={{ border: "solid grey", margin: "1vw" }}
         src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
       />
+        {proOwnerId == problemOwnerId ? <WorkspacePremiumIcon className="badge" /> : <br />}
       </div>
       {location.pathname === "/" && !user ? (
         <div>

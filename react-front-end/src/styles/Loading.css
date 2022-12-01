@@ -1,6 +1,13 @@
-.loading {
+.HomePageLoading {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.Userloading{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 7em;
 }

@@ -5,7 +5,7 @@ import logo from "../OPOlogo.jpg";
 import PuffLoader from "react-spinners/PuffLoader";
 import "../styles/Loading.css";
 import ProblemFrom from "./ProblemFrom";
-
+import "../styles/ProblemList.css"
 
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 const PROBLEMS_ENDPOINT2 = `https://opobackend.azurewebsites.net/api/Problems`;
@@ -44,7 +44,7 @@ const HomePage = ({ user }) => {
     
     <div >
       {user && <ProblemFrom addProblem={addProblem} />}
-      {loading ? <div className="loading"> <PuffLoader className="PuffLoader" size={200} color="#E88721" /> </div> : (
+      {loading ? <div className="HomePageLoading"> <PuffLoader className="PuffLoader" size={200} color="#E88721" /> </div> : (
       <ul className="Problem-List" style={{}}>
         {[...problems].reverse().map((problem) => (
           <li key={problem.problemId}>

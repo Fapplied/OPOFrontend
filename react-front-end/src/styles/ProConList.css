@@ -15,6 +15,7 @@ p {
   margin: 0.5em;
   height: 12em;
   overflow: scroll;
+  display: flex;
 }
 
 .ListHeader {
@@ -26,4 +27,31 @@ p {
 
 .ProConHeader {
   font-size: 1.2em;
+}
+
+.empty-list {
+ align-self: center;
+  width: 24em;
+}
+
+.spinner {
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .ProsConsList {
+    width: 24em;
+  }
 }

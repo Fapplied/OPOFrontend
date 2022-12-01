@@ -2,22 +2,20 @@
   display: flex;
   align-items: center;
   border: solid thin;
-  margin: 1em 0;
+  margin: 1em 1em;
 }
 
 .opinions {
-  width: 19em;
+  width: auto;
   align-self: center;
   text-align: start;
 }
-@media only screen and (max-width: 370px) {
-  .opinions {
-    width: 8em;
-  }
+.badge {
+  color: #F3C89D;
 }
 
-@media only screen and (min-width:371px) and (max-width: 450px) {
+@media only screen and (min-width: 900px) {
 .opinions {
-  width: 13em;
+  width: 15em;
 }
 }

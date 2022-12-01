@@ -1,0 +1,17 @@
+.menuButton {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  margin: 0.3em;
+  z-index: 3;
+  padding: 0.6em;
+  border-radius: 0.2em;
+  background-color: #edfdef;
+  border: none;
+  font-size: larger;
+}
+
+.navBar--ul {
+  padding: 0;
+}
+

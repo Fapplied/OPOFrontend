@@ -1,10 +1,10 @@
 // import logo from "../OPOlogo.jpg";
-import "../styles/NavBar.css";
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import { removeLS, getLS, setLS } from "../helpers/storage";
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
 import endpoints from "../helpers/endpoints";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const NavBar = ({ setUser, user }) => {
   const [menuVisible, setMenuVisible] = useState(false)
@@ -56,11 +56,16 @@ const NavBar = ({ setUser, user }) => {
   function closeNav () {
     setMenuVisible(false)
   }
+  
+  function logOutButton () {
+    handleSignOut()
+    closeNav()
+  }
 
   return (
     <div >
       <button className="menuButton" onClick={toggleNav}>
-        Menu
+        {user !== false ? "Menu" : "LogIn"}
         {/*<img*/}
         {/*  className="Logo"*/}
         {/*  src=""*/}
@@ -72,15 +77,15 @@ const NavBar = ({ setUser, user }) => {
       <nav className="navBar" style={{display: menuVisible === true ? "block":"none"}}>
         <ul className="navBar--ul">
           <li>
-            <Link to="/" onClick={closeNav}>Home</Link>
+            {user !== false && <Link to="/" onClick={closeNav}>Home</Link>}
           </li>
           <li>
-            <Link to="/profile" onClick={closeNav}>Profile</Link>
+            {user !== false && <Link to="/profile" onClick={closeNav}>Profile</Link>}
           </li>
           <li>
             {user === false && <div id="signInDiv"></div>}
             {user !== false && (
-              <button onClick={handleSignOut}>Sign Out</button>
+              <button onClick={logOutButton} >Sign Out</button>
             )}
           </li>
         </ul>

@@ -75,6 +75,20 @@ const Profile = ({ user }) => {
         src={picURL ?? ""}
         alt="Profile Picture"
       />
+      {/*<input*/}
+      {/*  onChange={handleImage}*/}
+      {/*  accept="image/jpeg, image/png"*/}
+      {/*  className="hidden"*/}
+      {/*  type="file"*/}
+      {/*  id="my_file"*/}
+      {/*></input>*/}
+      {/*<IconButton className="AddPhotoIcon"*/}
+      {/*  onClick={() => {*/}
+      {/*    document.getElementById("my_file").click();*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <AddAPhotoIcon />*/}
+      {/*</IconButton>*/}
       <input
         onChange={handleImage}
         accept="image/jpeg, image/png"
@@ -83,13 +97,12 @@ const Profile = ({ user }) => {
         id="my_file"
       ></input>
       <IconButton className="AddPhotoIcon"
-        onClick={() => {
-          document.getElementById("my_file").click();
-        }}
+                  onClick={() => {
+                    document.getElementById("my_file").click();
+                  }}
       >
         <AddAPhotoIcon />
       </IconButton>
-
       <h2>{user.name ?? user.data.name}</h2>
     </div>
   );

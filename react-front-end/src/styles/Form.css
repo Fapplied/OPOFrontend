@@ -1,5 +1,4 @@
 .ProConForm {
-  /*width: fit-content;*/
   /*text-align: initial;*/
   display: flex;
   align-items: center;
@@ -17,7 +16,6 @@
 
 .TextInput {
   width: 25em;
-  /*border-radius: 0.5em;*/
   padding: 0.5em;
   border: transparent;
 }
@@ -32,6 +30,6 @@
 
 @media only screen and (max-width: 425px) {
   .TextInput {
-    width: 10em;
+    width: auto;
   }
 }

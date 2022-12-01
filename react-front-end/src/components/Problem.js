@@ -31,31 +31,34 @@ const Problem = ({ user, problem, getProblems }) => {
       getProblems();
     }
   };
-  
+
   const asyncprofilePic = async () => {
     await axios.get(`https://opobackend.azurewebsites.net/api/users/${userId ?? user.data.userId}`).then(res => setPicURL(res.data.profilePicture.url))
-    
+
   }
-  
-  useEffect( () => {
-    asyncprofilePic();
+
+  useEffect(() => {
+      asyncprofilePic();
     }, []
   )
-  
+
 
   return (
     <div className="problem">
       <div className="problem-header" style={{ display: "flex" }}>
         <div>
-        <Avatar
-          style={{ border: "solid grey", margin: "1vw", marginTop: "1vw" }}
-          src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
-        />
-          <span><b> {name}</b></span>
+          <Avatar
+            className="avatar"
+            style={{ border: "solid grey", margin: "1vw", marginTop: "1vw" }}
+            src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${userId}.svg`}
+          />
+          <span><b>{name?.split(" ")[0]}</b></span>
         </div>
-        <h4>{problem.title}</h4>
-        <h6>All ProLikes = {allLikes.proLikes}</h6>
-        <h6>All ConLikes = {allLikes.conLikes}</h6>
+        <div>
+          <h3>{problem.title}</h3>
+          <h6><span className="total-likes" style={{color: allLikes.proLikes > allLikes.conLikes ? "#84d052" : "#9a9a9a" }}>{allLikes.proLikes}</span> Pro Likes <span className="versus">vs</span> Con
+            Likes <span className="total-likes" style={{color: allLikes.conLikes > allLikes.proLikes ? "#84d052" : "#9a9a9a" }}>{allLikes.conLikes}</span></h6>
+        </div>
         {location.pathname === "/profile" && user ? (
           <IconButton onClick={clickDelete}>
             <DeleteIcon />
