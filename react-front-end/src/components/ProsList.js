@@ -3,7 +3,7 @@ import Pro from "./Pro";
 import axios from "axios";
 import ProForm from "./ProForm";
 import "../styles/ProConList.css";
-import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
+import PostAddIcon from '@mui/icons-material/PostAdd';
 
 const Pro_ENDPOINT = "https://opobackend.azurewebsites.net/api/Pros";
 const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
@@ -53,7 +53,7 @@ const ProList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
                   problemOwnerId={problemOwnerId}
                 />
               </li>
-            )): <div className="empty-list"><HourglassBottomIcon className="spinner"/><p >No pros added yet,<br/>  Add One!</p></div>}
+            )): <div className="empty-list"><PostAddIcon /><p >No pros added yet,<br/>  Add One!</p></div>}
           </ul>
         )}
       </div>
