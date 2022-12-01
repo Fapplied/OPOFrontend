@@ -47,14 +47,17 @@ const ProForm = ({ addPro }) => {
           className="emoji-icon"
           src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
           onClick={() => setShowPicker(val => !val)}  alt='Emoji'/>
+        <div className="picker-wrapper">
         {showPicker && <Picker
           pickerStyle={{ width: '100%' }}
           onEmojiClick={onEmojiClick} />}
+        </div>
         <Tooltip title='Add pro'>
       <IconButton className="prosconButton" type="submit">
         <AddIcon />
     </IconButton>
         </Tooltip>
+      
       </form>
     </div>
   );
