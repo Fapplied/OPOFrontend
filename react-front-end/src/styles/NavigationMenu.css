@@ -17,6 +17,6 @@
 
 .app-bar {
   /*background-color: #607370;*/
-  height: 4em;
+  height: 6em;
   background-image: linear-gradient(to right top, #7cafb5, #80b3b7, #84b7b9, #88babb, #8cbebd);
 }

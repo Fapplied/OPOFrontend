@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Problem from "./Problem";
 import axios, { Axios } from "axios";
-import logo from "../OPOlogo.jpg";
 import PuffLoader from "react-spinners/PuffLoader";
 import "../styles/Loading.css";
 import ProblemFrom from "./ProblemFrom";

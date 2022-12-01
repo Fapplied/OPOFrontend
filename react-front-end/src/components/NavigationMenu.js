@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import React, { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -10,7 +9,6 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import MenuIcon from '@mui/icons-material/Menu';
-import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import { removeLS, setLS } from "../helpers/storage";
@@ -22,6 +20,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import {ReactComponent as ReactLogo} from '../logo.svg';
 
 const NavigationMenu = ({ setUser, user }) => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -114,10 +113,9 @@ const NavigationMenu = ({ setUser, user }) => {
   );
 
   return (
-    <div>
       <div >
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar  >
+          <AppBar>
             <Toolbar className="app-bar">
               <IconButton
                 onClick={toggleDrawer('left', true)}
@@ -130,9 +128,10 @@ const NavigationMenu = ({ setUser, user }) => {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                OPO
+                <div>
+               <ReactLogo/>
+                </div>
               </Typography>
-              {/*<div id="signInDiv"></div>*/}
               {user === false ? <div id="signInDiv"></div> : <Button color="inherit" onClick={handleSignOut}>Sign Out</Button>}
             </Toolbar>
           </AppBar>
@@ -144,9 +143,7 @@ const NavigationMenu = ({ setUser, user }) => {
         >
           {list('left')}
         </Drawer>
-
       </div>
-    </div>
   );
 }
 
