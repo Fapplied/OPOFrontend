@@ -79,7 +79,7 @@ const Pro = ({pro, getProblems, allLikes, setAllLikes, problemOwnerId}) => {
           style={{border: "solid grey", margin: "1vw"}}
           src={picURL ?? `https://avatars.dicebear.com/api/open-peeps/${proOwnerId}.svg`}
         />
-        {proOwnerId == problemOwnerId ? <WorkspacePremiumIcon className="badge"/> : <br/>}
+        {proOwnerId == problemOwnerId ?  <WorkspacePremiumIcon titleAccess='Owner' className="badge"/>  : <br/>}
       </div>
       {location.pathname === "/" && !user ? (
         <div>
