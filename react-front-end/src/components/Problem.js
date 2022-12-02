@@ -14,6 +14,7 @@ const Problem = ({ user, problem, getProblems }) => {
   const [picURL, setPicURL] = useState();
   const [allLikes, setAllLikes] = useState(false);
   const allLikesURL = `https://opobackend.azurewebsites.net/api/Likes/all/${problemId}`;
+  const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
     const getAllLikes = async (url) => {
@@ -26,6 +27,7 @@ const Problem = ({ user, problem, getProblems }) => {
   }, []);
 
   const clickDelete = async () => {
+    setDeleted(true);
     const { status } = await axios.delete(PROBLEMS_ENDPOINT + `/${problemId}`);
     if (status === 204) {
       getProblems();
@@ -44,7 +46,7 @@ const Problem = ({ user, problem, getProblems }) => {
 
 
   return (
-    <div className="problem">
+    <div style={{display: deleted ?   'none': 'block' }}   className="problem" >
       <div className="problem-header" style={{ display: "flex" }}>
         <div>
           <Avatar

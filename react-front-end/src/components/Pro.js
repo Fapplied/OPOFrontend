@@ -20,6 +20,8 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const location = useLocation();
   const [proOwnerId, setProOwnerId] = useState(null);
   const [picURL, setPicURL] = useState();
+  const [deleted, setDeleted] = useState(false)
+
 
   const handleUpVoteClick = async () => {
     const { data, status } = await axios.post(
@@ -37,6 +39,7 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   };
 
   const handleDelete = async () => {
+    setDeleted(true);
     const { status } = await axios.delete(PRO_ENDPOINT + `/${proId}`);
     if (status === 204) {
       await getProblems();
@@ -70,9 +73,9 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   }, []);
 
   return (
-    <div
+    <div 
       className="ProConList-Item"
-      style={{
+      style={{ display: deleted ? 'none' :'flex',
         boxShadow:
           proOwnerId == problemOwnerId
             ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px"

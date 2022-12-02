@@ -19,6 +19,8 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   const [picURL, setPicURL] = useState();
   const [conOwnerId, setConOwnerId] = useState(null);
   const user = getLS("User2");
+  const [deleted, setDeleted] = useState(false)
+
 
   const location = useLocation();
 
@@ -38,6 +40,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   };
 
   const handleDelete = async () => {
+    setDeleted(true);
     const { status } = await axios.delete(Cons_ENDPOINT + `/${conId}`);
     if (status === 204) {
       await getProblems();
@@ -69,9 +72,9 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   }, []);
 
   return (
-    <div
+    <div 
       className="ProConList-Item"
-      style={{
+      style={{display: deleted ? 'none' :'flex',
         boxShadow:
           conOwnerId == problemOwnerId
             ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px"

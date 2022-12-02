@@ -23,6 +23,8 @@ function App() {
           name="description"
           content="Social media network to get other peoples opinion"
         />
+        
+
         <meta charSet="utf-8" />
         <meta name="author" content="Camille, Rinaldo and Felix" />
       </Helmet>
