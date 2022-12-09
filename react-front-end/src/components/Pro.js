@@ -74,13 +74,8 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
 
   return (
     <div 
-      className="ProConList-Item"
-      style={{ display: deleted ? 'none' :'flex',
-        boxShadow:
-          proOwnerId == problemOwnerId
-            ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px"
-            : "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px",
-        borderColor: proOwnerId == problemOwnerId ? "#F3C89D" : "#DDDCDB",
+      className= {proOwnerId == problemOwnerId ? "ProConList-Item-owner" : "ProConList-Item"}
+      style={{ display: deleted ? 'none' :'flex'
       }}
     >
       <div>
@@ -99,11 +94,11 @@ const Pro = ({ pro, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
       </div>
       {location.pathname === "/" && !user ? (
         <div>
-          <p style={{ color: "black" }}>{likes}</p>
+          <p>{likes}</p>
         </div>
       ) : (
         <div>
-          <p style={{ color: "black" }}>{likes}</p>
+          <p >{likes}</p>
 
           {isLiked ? (
             <Tooltip title="Unlike">

@@ -11,7 +11,6 @@ const PROBLEMS_ENDPOINT = "https://opobackend.azurewebsites.net/api/Problems";
 const ConsList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
   const { conList, problemId } = problem;
   const { userId } = user;
-
   const [cons, setCons] = useState(() => {
     return conList ?? [];
   });
@@ -22,6 +21,7 @@ const ConsList = ({ problem, user, allLikes, setAllLikes, problemOwnerId }) => {
       Cons_ENDPOINT + `?problemId=${problemId}`,
       { Disadvantage: Disadvantage, UserId: userId }
     );
+    
     if (status === 201) {
       await getOneProblem();
     }

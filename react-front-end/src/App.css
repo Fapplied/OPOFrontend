@@ -97,3 +97,8 @@ ul {
   max-width: 80vw;
   align-self: center;
 }
+
+.TitleMessageStuff{
+  position: relative;
+  height: 800px;
+}

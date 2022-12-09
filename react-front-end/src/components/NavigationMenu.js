@@ -132,7 +132,8 @@ const NavigationMenu = ({ setUser, user }) => {
                <ReactLogo/>
                 </div>
               </Typography>
-              {user === false ? <div id="signInDiv"></div> : <Button color="inherit" onClick={handleSignOut}>Sign Out</Button>}
+              {user === false ? <div id="signInDiv"></div> : 
+                <Button color="inherit" onClick={handleSignOut}>Sign Out</Button>}
             </Toolbar>
           </AppBar>
         </Box>

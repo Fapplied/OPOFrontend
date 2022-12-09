@@ -23,11 +23,11 @@ const HomePage = ({ user }) => {
   };
 
   const addProblem = async (problem) => {
-    // adds new con to beginning of problems array
     const { status } = await axios.post(
       PROBLEMS_ENDPOINT2 + `?userId=${userId}`,
       problem
     );
+    
     if (status === 201) {
       await getProblems();
     }
@@ -42,7 +42,6 @@ const HomePage = ({ user }) => {
       {user && <ProblemFrom addProblem={addProblem} />}
       {loading ? (
         <div className="HomePageLoading">
-          {" "}
           <PuffLoader className="PuffLoader" size={200} color="#E88721" />{" "}
         </div>
       ) : (

@@ -46,6 +46,7 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
       await getProblems();
     }
   };
+  
   const getLikes = async () => {
     const { data, status } = await axios.get(Likes_ENDPOINT + `/${conId}`);
     if (status === 200 && Number.isInteger(data.length)) {
@@ -72,14 +73,9 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
   }, []);
 
   return (
-    <div 
-      className="ProConList-Item"
+    <div
+      className= {conOwnerId == problemOwnerId ? "ProConList-Item-owner" : "ProConList-Item"}
       style={{display: deleted ? 'none' :'flex',
-        boxShadow:
-          conOwnerId == problemOwnerId
-            ? " #F3C89D 0px 2px 4px 0px, #F3C89D 0px 2px 16px 0px"
-            : "#DDDCDB 0px 2px 4px 0px, #DDDCDB 0px 2px 16px 0px",
-        borderColor: conOwnerId == problemOwnerId ? "#F3C89D" : "#DDDCDB",
       }}
     >
       <div>
@@ -98,11 +94,11 @@ const Con = ({ con, getProblems, allLikes, setAllLikes, problemOwnerId }) => {
       </div>
       {location.pathname === "/" && !user ? (
         <div>
-          <p style={{ color: "black" }}>{likes}</p>
+          <p>{likes}</p>
         </div>
       ) : (
         <div>
-          <p style={{ color: "black" }}>{likes}</p>
+          <p >{likes}</p>
           {isLiked ? (
             <Tooltip title="Unlike">
               <IconButton onClick={handleUpVoteClick}>

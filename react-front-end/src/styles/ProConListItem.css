@@ -1,8 +1,10 @@
 .ProConList-Item {
   
   align-items: center;
-  border: solid thin;
+  border: #DDDCDB solid thin;
   margin: 1em 1em;
+  
+  box-shadow: #DDDCDB 0 2px 4px 0, #DDDCDB 0 2px 16px 0;
 }
 
 .opinions {
@@ -24,4 +26,12 @@
 .opinions {
   width: 14em;
 }
+}
+
+.ProConList-Item-owner {
+
+  align-items: center;
+  border: #F3C89D solid thin;
+  margin: 1em 1em;
+  box-shadow: #F3C89D 0 2px 4px 0, #F3C89D 0 2px 16px 0
 }

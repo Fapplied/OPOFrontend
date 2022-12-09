@@ -6,7 +6,7 @@ function Landing() {
   return (
     <div
       className="TitleMessageStuff"
-      style={{ position: "relative", height: "800px" }}
+    
     >
       <TitleMessage />
     </div>
